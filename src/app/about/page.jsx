@@ -23,35 +23,35 @@ const About = () => {
   const timeline = [
     {
       type: "experience",
-      year: "2018 - Present",
-      title: "Web Developer",
-      company: "Envato",
+      year: "Sep / 2024 - Present",
+      title: "MERN Stack Developer & React Native Developer",
+      company: "Pearl Organisation",
       description:
-        "Lorem ipsum dolor sit amet, consectetur tempor incididunt ut labore adipisicing elit.",
+        "MERN Stack & React Native Developer with hands-on experience in building dynamic, scalable web and mobile applications. Successfully created a finance and society management application with seamless UI and efficient backend integration.",
     },
     {
       type: "education",
-      year: "2015",
-      title: "Engineer Degree",
-      company: "Oxford University",
+      year: "Dec / 2024 - Present",
+      title: "MCA",
+      company: "Uttranchal University",
       description:
-        "Lorem ipsum dolor sit amet, consectetur tempor incididunt ut labore adipisicing elit.",
+        "Pursuing a Master of Computer Applications (MCA) degree at Uttranchal University, focusing on advanced software development, database management, and IT solutions.",
     },
     {
       type: "experience",
-      year: "2013 - 2018",
-      title: "UI/UX Designer",
-      company: "Themeforest",
+      year: "March / 2024 - Aug / 2024",
+      title: "Front end Developer",
+      company: "ByteWorld It Services",
       description:
-        "Lorem ipsum dolor sit amet, consectetur tempor incididunt ut labore adipisicing elit.",
+        "Frontend Developer with expertise in React.js, skilled in building responsive and user-centric web interfaces. Successfully developed the CRM system for PropertyDekho.com to streamline client and property management.",
     },
     {
       type: "education",
-      year: "2012",
-      title: "Master Degree",
-      company: "Kiev University",
+      year: "Jan / 2023 - June / 2024",
+      title: "Full Stack Development Certificate",
+      company: "Newtown School",
       description:
-        "Lorem ipsum dolor sit amet, consectetur tempor incididunt ut labore adipisicing elit.",
+        "Completed a comprehensive Full Stack Development Certification from Newton School, with hands-on experience in building responsive web applications using technologies like HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB. Gained practical knowledge through real-world projects and collaborative coding environments",
     },
   ];
   const button_name = {
@@ -96,7 +96,7 @@ const About = () => {
         <Header />
 
         <div className="flex flex-col justify-center items-center mr-20 ml-30">
-          <div className="w-full flex justify-center items-center my-10">
+          <div className="w-full flex justify-center items-center my-8">
             <div className="relative flex items-center justify-center">
               <h1 className="text-8xl font-[900] text-gray-800">RESUME</h1>
               <h1 className="absolute top-6 text-5xl font-[900] text-gray-100 flex gap-5">
@@ -206,42 +206,43 @@ const About = () => {
             <h2 className="text-3xl font-bold text-center mb-12">
               EXPERIENCE & EDUCATION
             </h2>
-            <div className="grid md:grid-cols-2 gap-10">
-              {timeline.map((item, index) => (
-                <div key={index} className="relative pl-12">
-                  <div className="absolute left-0 top-0 flex flex-col items-center">
-                    <div className="w-10 h-10 bg-lime-500 rounded-full flex items-center justify-center text-white text-lg z-10">
-                      {item.type === "experience" ? (
-                        <FaBriefcase />
-                      ) : (
-                        <FaGraduationCap />
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="grid md:grid-cols-2 gap-5">
+                {timeline.map((item, index) => (
+                  <div key={index} className="relative pl-12">
+                    <div className="absolute left-0 top-0 flex flex-col items-center">
+                      <div className="w-10 h-10 bg-lime-500 rounded-full flex items-center justify-center text-white text-lg z-10">
+                        {item.type === "experience" ? (
+                          <FaBriefcase />
+                        ) : (
+                          <FaGraduationCap />
+                        )}
+                      </div>
+                      {index !== timeline.length && (
+                        <div
+                          className="bg-lime-500 h-20 mt-1"
+                          style={{ width: "1px" }}
+                        />
                       )}
                     </div>
-                    {/* Fixed height vertical progress line */}
-                    {index !== timeline.length && (
-                      <div
-                        className="bg-lime-500 h-10 mt-1"
-                        style={{ width: "1px" }}
-                      />
-                    )}
-                  </div>
 
-                  <div className="mb-1">
-                    <span className="bg-gray-800 text-white text-xs px-3 py-1 rounded-full">
-                      {item.year}
-                    </span>
+                    <div className="mb-1">
+                      <span className="bg-gray-800 text-white text-xs px-3 py-1 rounded-full">
+                        {item.year}
+                      </span>
+                    </div>
+                    <h3 className="font-bold text-white">
+                      {item.title}{" "}
+                      <span className="text-gray-400 font-semibold">
+                        — {item.company}
+                      </span>
+                    </h3>
+                    <p className="text-gray-400 mt-2 text-sm w-[90%] md:w-[100%] text-justify">
+                      {item.description}
+                    </p>
                   </div>
-                  <h3 className="font-bold text-white">
-                    {item.title}{" "}
-                    <span className="text-gray-400 font-semibold">
-                      — {item.company}
-                    </span>
-                  </h3>
-                  <p className="text-gray-400 mt-2 text-sm">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>

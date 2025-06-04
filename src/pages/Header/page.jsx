@@ -30,6 +30,14 @@ const Header = () => {
                 About
               </span>
             </Link>
+            <Link href={"/works"} className="relative group">
+              <div className="text-lg font-bold border border-gray-900 rounded-full group-hover:border-yellow-400 group-hover:rounded-r-3xl p-3 bg-gray-900 text-white group-hover:bg-yellow-400 transition">
+                <FaBriefcase className="transform group-hover:rotate-[360deg] transition-transform duration-900" />
+              </div>
+              <span className="absolute left-8 top-1/2 transform -translate-y-1/2 border group-hover:border-yellow-400 whitespace-nowrap pr-5 py-[0.7rem] text-sm bg-yellow-400 text-white rounded-r-3xl opacity-0 group-hover:opacity-100 group-hover:block hidden group-hover:translate-x-2 transition">
+                Portfolio
+              </span>
+            </Link>
             <Link href={"/"} className="relative group">
               <div className="text-lg font-bold border border-gray-900 rounded-full group-hover:border-yellow-400 group-hover:rounded-r-3xl p-3 bg-gray-900 text-white group-hover:bg-yellow-400 transition">
                 <FaEnvelopeOpen className="transform group-hover:rotate-[360deg] transition-transform duration-900" />
@@ -38,14 +46,7 @@ const Header = () => {
                 Contact
               </span>
             </Link>
-            <Link href={"/"} className="relative group">
-              <div className="text-lg font-bold border border-gray-900 rounded-full group-hover:border-yellow-400 group-hover:rounded-r-3xl p-3 bg-gray-900 text-white group-hover:bg-yellow-400 transition">
-                <FaBriefcase className="transform group-hover:rotate-[360deg] transition-transform duration-900" />
-              </div>
-              <span className="absolute left-8 top-1/2 transform -translate-y-1/2 border group-hover:border-yellow-400 whitespace-nowrap pr-5 py-[0.7rem] text-sm bg-yellow-400 text-white rounded-r-3xl opacity-0 group-hover:opacity-100 group-hover:block hidden group-hover:translate-x-2 transition">
-                Portfolio
-              </span>
-            </Link>
+            
             <Link href={"/"} className="relative group">
               <div className="text-lg font-bold border border-gray-900 rounded-full group-hover:border-yellow-400 group-hover:rounded-r-3xl p-3 bg-gray-900 text-white group-hover:bg-yellow-400 transition">
                 <FaComments className="transform group-hover:rotate-[360deg] transition-transform duration-900" />
