@@ -38,7 +38,7 @@ const Header = () => {
                 Portfolio
               </span>
             </Link>
-            <Link href={"/"} className="relative group">
+            <Link href={"/contact"} className="relative group">
               <div className="text-lg font-bold border border-gray-900 rounded-full group-hover:border-yellow-400 group-hover:rounded-r-3xl p-3 bg-gray-900 text-white group-hover:bg-yellow-400 transition">
                 <FaEnvelopeOpen className="transform group-hover:rotate-[360deg] transition-transform duration-900" />
               </div>

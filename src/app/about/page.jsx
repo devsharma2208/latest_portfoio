@@ -79,7 +79,7 @@ const About = () => {
       if (el) {
         e.preventDefault();
         el.scrollBy({
-          left: e.deltaY * 50,
+          left: e.deltaY * 5,
           behavior: "smooth",
         });
       }

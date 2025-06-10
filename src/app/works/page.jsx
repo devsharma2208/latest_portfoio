@@ -38,6 +38,19 @@ const Works = () => {
       code: "https://play.google.com/store/apps/details?id=com.casham&hl=en",
     },
     {
+      title: "3B Profiles",
+      tech: "React Native / Express js / MongoDB",
+      img: require("../../Images/3bProfiles.jpg"),
+      features: [
+        "Connects distributors, sellers, and system managers.",
+        "Simplifies order placement and tracking.",
+        "Manages inventory with ease.",
+        "Boosts growth through one smart platform.",
+      ],
+      live: "https://play.google.com/store/apps/details?id=com.pearl.bprofiles&pli=1",
+      code: "https://play.google.com/store/apps/details?id=com.pearl.bprofiles&pli=1",
+    },
+    {
       title: "Goibibo Clone",
       tech: "React JS, Redux",
       img: require("../../Images/Goibibo.png"),
@@ -95,51 +108,51 @@ const Works = () => {
   const scrollRef = useRef(null);
   const autoScrollInterval = useRef(null);
 
+  const startAutoScroll = () => {
+    const el = scrollRef.current;
+    if (!el || autoScrollInterval.current) return;
+
+    autoScrollInterval.current = setInterval(() => {
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth) {
+        el.scrollLeft = 0;
+      } else {
+        el.scrollBy({ left: 1, behavior: "smooth" });
+      }
+    }, 30);
+  };
+
+  const stopAutoScroll = () => {
+    if (autoScrollInterval.current) {
+      clearInterval(autoScrollInterval.current);
+      autoScrollInterval.current = null;
+    }
+  };
+
   useEffect(() => {
     const el = scrollRef.current;
-
-    const startAutoScroll = () => {
-      autoScrollInterval.current = setInterval(() => {
-        if (el) {
-          // If scrolled to end, reset to start
-          if (el.scrollLeft + el.clientWidth >= el.scrollWidth) {
-            el.scrollLeft = 0;
-          } else {
-            el.scrollBy({ left: 1, behavior: "smooth" });
-          }
-        }
-      }, 30); // slower scroll speed
-    };
-
-    const stopAutoScroll = () => {
-      clearInterval(autoScrollInterval.current);
-    };
+    if (!el) return;
 
     const onWheel = (e) => {
-      if (el) {
-        e.preventDefault();
-        el.scrollBy({
-          left: e.deltaY * 2,
-          behavior: "smooth",
-        });
-      }
+      e.preventDefault();
+      el.scrollBy({
+        left: e.deltaY * 5,
+        behavior: "smooth",
+      });
     };
 
-    if (el) {
-      startAutoScroll();
-      el.addEventListener("mouseenter", stopAutoScroll);
-      el.addEventListener("mouseleave", startAutoScroll);
-      el.addEventListener("wheel", onWheel, { passive: false });
-    }
+    startAutoScroll();
+
+    el.addEventListener("mouseenter", stopAutoScroll);
+    el.addEventListener("mouseleave", startAutoScroll);
+    el.addEventListener("wheel", onWheel, { passive: false });
 
     return () => {
       stopAutoScroll();
-      el?.removeEventListener("mouseenter", stopAutoScroll);
-      el?.removeEventListener("mouseleave", startAutoScroll);
-      el?.removeEventListener("wheel", onWheel);
+      el.removeEventListener("mouseenter", stopAutoScroll);
+      el.removeEventListener("mouseleave", startAutoScroll);
+      el.removeEventListener("wheel", onWheel);
     };
   }, []);
-
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="sticky top-0 bg-black z-10 pb-10">
@@ -178,7 +191,8 @@ const Works = () => {
                   width={400}
                   height={200}
                   className={`rounded-lg ${
-                    project.title === "Casham"
+                    project.title === "Casham" ||
+                    project.title === "3B Profiles"
                       ? "object-contain"
                       : "object-cover"
                   } w-full h-full`}
