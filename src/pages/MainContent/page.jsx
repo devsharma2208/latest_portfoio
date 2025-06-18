@@ -17,7 +17,7 @@ const MainContent = () => {
             <h1 className="text-gray-500 text-5xl px-0 pt-6">
               WEB DESIGNER /{" "}
             </h1>
-            <h1 className="text-gray-500 text-3xl px-0 pt-1 text-green-900">
+            <h1 className="text-3xl px-0 pt-1 text-green-900">
               APPLICATION DEVELOPER
             </h1>
           </div>

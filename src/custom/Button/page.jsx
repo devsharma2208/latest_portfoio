@@ -1,6 +1,7 @@
 import React from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { FaDownload } from "react-icons/fa6";
+import { IoIosSend } from "react-icons/io";
 
 const Button = (props) => {
   console.log(props);
@@ -21,6 +22,9 @@ const Button = (props) => {
         )}
         {props.title === "Download CV" && (
           <FaDownload className="text-white bg-[#72b626] p-2 w-12 h-12 rounded-full z-10" />
+        )}
+        {props.title === "Send Message" && (
+          <IoIosSend className="text-white bg-[#72b626] p-2 w-12 h-12 rounded-full z-10" />
         )}
       </div>
     </div>

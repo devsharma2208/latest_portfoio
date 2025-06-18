@@ -1,10 +1,42 @@
 "use client";
+import React, { useRef, useState } from "react";
+import Button from "@/custom/Button/page";
 import Header from "@/pages/Header/page";
-import React from "react";
+import emailjs from "@emailjs/browser";
 import { IoIosMailOpen } from "react-icons/io";
 import { IoCallSharp } from "react-icons/io5";
 
 const Contact = () => {
+  const form = useRef();
+  const [isSent, setIsSent] = useState(false);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_lchhhli", // Replace with your service ID
+        "template_3x3hpn3", // Replace with your template ID
+        form.current,
+        {
+          publicKey: "bj00uJZXauMUVF1xD", // Replace with your public key
+        }
+      )
+      .then(
+        () => {
+          setIsSent(true);
+          form.current.reset();
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
+
+  const button_name = {
+    title: isSent ? "Message Sent ✅" : "Send Message",
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="sticky top-0 bg-black z-10 pb-10">
@@ -49,18 +81,25 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="md:w-2/3 space-y-5">
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="md:w-2/3 space-y-5"
+        >
+          <input type="hidden" name="to_name" value="Dev Sharma" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <input
               type="text"
-              name="name"
+              name="user_name"
               placeholder="Your Name"
+              required
               className="h-14 px-4 w-full border border-gray-600 rounded-full bg-transparent text-white placeholder-gray-400 focus:outline-none focus:border-[#72b626]"
             />
             <input
               type="email"
-              name="email"
+              name="user_email"
               placeholder="Your Email"
+              required
               className="h-14 px-4 w-full border border-gray-600 rounded-full bg-transparent text-white placeholder-gray-400 focus:outline-none focus:border-[#72b626]"
             />
             <input
@@ -74,12 +113,13 @@ const Contact = () => {
             name="message"
             placeholder="Your Message"
             rows="6"
+            required
             className="w-full px-4 py-3 border border-gray-600 rounded-4xl bg-transparent text-white placeholder-gray-400 focus:outline-none focus:border-[#72b626] resize-none"
           ></textarea>
-          <button className="bg-[#72b626] text-black px-6 py-3 rounded-full font-semibold hover:bg-[#5da41f] transition duration-300">
-            Send Message
-          </button>
-        </div>
+          <div className="items-start w-full">
+            <Button title={button_name.title} />
+          </div>
+        </form>
       </div>
     </div>
   );
