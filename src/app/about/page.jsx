@@ -97,7 +97,7 @@ const About = () => {
       title: "MERN Stack Developer & React Native Developer",
       company: "Pearl Organisation",
       description:
-        "MERN Stack & React Native Developer with hands-on experience in building dynamic, scalable web and mobile applications.",
+        "MERN Stack & React Native Developer with hands-on experience in building dynamic, scalable web and mobile applications. Successfully created a finance and society management application with seamless UI and efficient backend integration.",
     },
     {
       type: "education",
@@ -105,7 +105,7 @@ const About = () => {
       title: "MCA",
       company: "Uttranchal University",
       description:
-        "Pursuing a Master of Computer Applications (MCA) degree focusing on advanced software development.",
+        "Pursuing a Master of Computer Applications (MCA) degree at Uttranchal University, focusing on advanced software development, database management, and IT solutions.",
     },
     {
       type: "experience",
@@ -113,7 +113,7 @@ const About = () => {
       title: "Front end Developer",
       company: "ByteWorld It Services",
       description:
-        "Frontend Developer with expertise in React.js. Developed the CRM for PropertyDekho.com.",
+        "Completed a comprehensive Full Stack Development Certification from Newton School, with hands-on experience in building responsive web applications using technologies like HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB. Gained practical knowledge through real-world projects and collaborative coding environments.",
     },
     {
       type: "education",
@@ -285,7 +285,7 @@ const About = () => {
             <div className="grid md:grid-cols-2 gap-5">
               {timeline.map((item, index) => (
                 <AnimatedCard direction="up">
-                  <div key={index} className="relative pl-12 w-xl">
+                  <div key={index} className="relative pl-12 w-3xl">
                     <div className="absolute left-0 top-0 flex flex-col items-center">
                       <div className="w-10 h-10 bg-lime-500 rounded-full flex items-center justify-center text-white text-lg z-10">
                         {item.type === "experience" ? (
