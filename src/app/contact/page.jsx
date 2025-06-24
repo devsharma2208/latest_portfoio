@@ -5,26 +5,53 @@ import Header from "@/pages/Header/page";
 import emailjs from "@emailjs/browser";
 import { IoIosMailOpen } from "react-icons/io";
 import { IoCallSharp } from "react-icons/io5";
+import Lottie from "lottie-react";
+import successAnimation from "../../assests/animations/success.json";
+import confetti from "canvas-confetti";
 
 const Contact = () => {
   const form = useRef();
   const [isSent, setIsSent] = useState(false);
 
+  const launchConfetti = () => {
+    const duration = 3 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = {
+      startVelocity: 30,
+      spread: 360,
+      ticks: 60,
+      zIndex: 1000,
+    };
+
+    const interval = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+      confetti(
+        Object.assign({}, defaults, {
+          particleCount,
+          origin: { x: Math.random(), y: Math.random() * 0.6 },
+        })
+      );
+    }, 250);
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
-      .sendForm(
-        "service_lchhhli", // Replace with your service ID
-        "template_3x3hpn3", // Replace with your template ID
-        form.current,
-        {
-          publicKey: "bj00uJZXauMUVF1xD", // Replace with your public key
-        }
-      )
+      .sendForm("service_lchhhli", "template_3x3hpn3", form.current, {
+        publicKey: "bj00uJZXauMUVF1xD",
+      })
       .then(
         () => {
           setIsSent(true);
           form.current.reset();
+          setTimeout(() => setIsSent(false), 4000); // hide after 4s
+          launchConfetti();
           console.log("SUCCESS!");
         },
         (error) => {
@@ -38,7 +65,18 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative">
+      {/* 🎉 Lottie Animation Overlay */}
+      {isSent && (
+        <div className="fixed inset-0 z-[999] bg-black/70 flex justify-center items-center">
+          <Lottie
+            animationData={successAnimation}
+            loop={false}
+            style={{ width: 300, height: 300 }}
+          />
+        </div>
+      )}
+
       <div className="sticky top-0 bg-black z-10 pb-10">
         <Header />
         <div className="flex flex-col justify-center items-center mr-20 ml-30">
@@ -81,11 +119,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <form
-          ref={form}
-          onSubmit={sendEmail}
-          className="md:w-2/3 space-y-5"
-        >
+        <form ref={form} onSubmit={sendEmail} className="md:w-2/3 space-y-5">
           <input type="hidden" name="to_name" value="Dev Sharma" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <input

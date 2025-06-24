@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/pages/Header/page";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +9,7 @@ import {
   faArrowUpRightFromSquare,
   faCode,
 } from "@fortawesome/free-solid-svg-icons";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const Works = () => {
   const projects = [
@@ -106,53 +107,48 @@ const Works = () => {
   ];
 
   const scrollRef = useRef(null);
-  const autoScrollInterval = useRef(null);
-
-  const startAutoScroll = () => {
-    const el = scrollRef.current;
-    if (!el || autoScrollInterval.current) return;
-
-    autoScrollInterval.current = setInterval(() => {
-      if (el.scrollLeft + el.clientWidth >= el.scrollWidth) {
-        el.scrollLeft = 0;
-      } else {
-        el.scrollBy({ left: 1, behavior: "smooth" });
-      }
-    }, 30);
-  };
-
-  const stopAutoScroll = () => {
-    if (autoScrollInterval.current) {
-      clearInterval(autoScrollInterval.current);
-      autoScrollInterval.current = null;
-    }
-  };
+  const x = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 200, damping: 30 });
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
+    const maxScroll = el.scrollWidth - el.clientWidth;
+
     const onWheel = (e) => {
       e.preventDefault();
-      el.scrollBy({
-        left: e.deltaY * 5,
-        behavior: "smooth",
-      });
+      const nextX = x.get() - e.deltaY * 2;
+      x.set(Math.min(0, Math.max(-maxScroll, nextX)));
     };
 
-    startAutoScroll();
+    let autoScroll;
+    if (!isHovered) {
+      autoScroll = setInterval(() => {
+        const next = x.get() - 1;
+        if (Math.abs(next) >= maxScroll) x.set(-maxScroll);
+        else x.set(next);
+      }, 30);
+    }
 
-    el.addEventListener("mouseenter", stopAutoScroll);
-    el.addEventListener("mouseleave", startAutoScroll);
     el.addEventListener("wheel", onWheel, { passive: false });
-
     return () => {
-      stopAutoScroll();
-      el.removeEventListener("mouseenter", stopAutoScroll);
-      el.removeEventListener("mouseleave", startAutoScroll);
+      clearInterval(autoScroll);
       el.removeEventListener("wheel", onWheel);
     };
-  }, []);
+  }, [x, isHovered]);
+
+  const getDirection = (index) => {
+    const directions = [
+      { x: -100 },
+      { x: 100 },
+      { y: -100 },
+      { y: 100 },
+    ];
+    return directions[index % directions.length];
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="sticky top-0 bg-black z-10 pb-10">
@@ -173,13 +169,21 @@ const Works = () => {
       </div>
 
       <div
-        className="overflow-x-auto overflow-y-hidden ml-30 scrollbar-hide"
+        className="overflow-hidden ml-20"
         ref={scrollRef}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="flex w-max gap-10 px-10 py-5">
+        <motion.div
+          style={{ x: springX }}
+          className="flex w-max gap-10 px-10 py-5"
+        >
           {[...projects, ...projects].map((project, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, ...getDirection(index) }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.8 }}
               className="min-w-[300px] md:min-w-[400px] p-4 rounded-xl shadow-lg bg-gray-800"
             >
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
@@ -219,9 +223,9 @@ const Works = () => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
