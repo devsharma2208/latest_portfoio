@@ -140,12 +140,7 @@ const Works = () => {
   }, [x, isHovered]);
 
   const getDirection = (index) => {
-    const directions = [
-      { x: -100 },
-      { x: 100 },
-      { y: -100 },
-      { y: 100 },
-    ];
+    const directions = [{ x: -100 }, { x: 100 }, { y: -100 }, { y: 100 }];
     return directions[index % directions.length];
   };
 
@@ -178,7 +173,7 @@ const Works = () => {
           style={{ x: springX }}
           className="flex w-max gap-10 px-10 py-5"
         >
-          {[...projects, ...projects].map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, ...getDirection(index) }}
@@ -195,8 +190,7 @@ const Works = () => {
                   width={400}
                   height={200}
                   className={`rounded-lg ${
-                    project.title === "Casham" ||
-                    project.title === "3B Profiles"
+                    project.title === "Casham" || project.title === "3B Profiles"
                       ? "object-contain"
                       : "object-cover"
                   } w-full h-full`}
