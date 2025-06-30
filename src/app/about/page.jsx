@@ -1,6 +1,3 @@
-// Installation command (run this in your project root)
-// npm install framer-motion
-
 "use client";
 import Button from "@/custom/Button/page";
 import Header from "@/pages/Header/page";
@@ -47,6 +44,16 @@ const About = () => {
   const x = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 300, damping: 40 });
   const [maxScroll, setMaxScroll] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Tailwind md breakpoint
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const updateMaxScroll = () => {
@@ -57,15 +64,15 @@ const About = () => {
         setMaxScroll(max);
       }
     };
-
-    updateMaxScroll();
+    if (!isMobile) updateMaxScroll();
     window.addEventListener("resize", updateMaxScroll);
     return () => window.removeEventListener("resize", updateMaxScroll);
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const container = containerRef.current;
     const onWheel = (e) => {
+      if (isMobile) return;
       e.preventDefault();
       const next = x.get() - e.deltaY;
       if (next <= 0 && Math.abs(next) <= maxScroll) {
@@ -74,7 +81,7 @@ const About = () => {
     };
     container?.addEventListener("wheel", onWheel, { passive: false });
     return () => container?.removeEventListener("wheel", onWheel);
-  }, [x, maxScroll]);
+  }, [x, maxScroll, isMobile]);
 
   const data1 = [
     { title: "First Name", value: "Dev" },
@@ -138,7 +145,7 @@ const About = () => {
   };
 
   const launchConfetti = () => {
-    const duration = 3 * 1000;
+    const duration = 3000;
     const animationEnd = Date.now() + duration;
     const defaults = {
       startVelocity: 30,
@@ -149,11 +156,7 @@ const About = () => {
 
     const interval = setInterval(() => {
       const timeLeft = animationEnd - Date.now();
-
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
-
+      if (timeLeft <= 0) return clearInterval(interval);
       const particleCount = 50 * (timeLeft / duration);
       confetti(
         Object.assign({}, defaults, {
@@ -169,9 +172,9 @@ const About = () => {
       <div className="sticky top-0 bg-black z-10 pb-10">
         <Header />
         <div className="flex justify-center items-center">
-          <div className="relative flex items-center justify-center my-10">
-            <h1 className="text-8xl font-[900] text-gray-800">RESUME</h1>
-            <h1 className="absolute top-6 text-5xl font-[900] text-gray-100 flex gap-5">
+          <div className="relative flex items-center justify-center mt-24 md:mt-8 my-10 ">
+            <h1 className="md:text-8xl text-5xl font-[900] text-gray-800">RESUME</h1>
+            <h1 className="absolute md:top-6 text-3xl md:text-5xl font-[900] text-gray-100 flex gap-5">
               <span>ABOUT</span> <span className="text-[#72b626]">ME</span>
             </h1>
           </div>
@@ -180,26 +183,30 @@ const About = () => {
 
       <div
         ref={containerRef}
-        className="overflow-hidden w-full cursor-grab active:cursor-grabbing pl-20"
+        className={`${
+          isMobile ? "overflow-auto" : "overflow-hidden"
+        } w-full cursor-grab active:cursor-grabbing pl-5 md:pl-20`}
       >
         <motion.div
           ref={scrollRef}
-          style={{ x: springX }}
-          drag="x"
-          dragConstraints={{ left: -maxScroll, right: 0 }}
-          className="flex gap-10 px-10 py-5 w-max"
+          style={isMobile ? {} : { x: springX }}
+          drag={isMobile ? false : "x"}
+          dragConstraints={isMobile ? {} : { left: -maxScroll, right: 0 }}
+          className={`${
+            isMobile ? "flex flex-col" : "flex flex-row"
+          } gap-10 px-5 md:px-10 py-5 w-max`}
         >
           <div className="min-w-[700px]">
             <h1 className="text-2xl font-[800] text-gray-100 mb-4">
               PERSONAL INFOS
             </h1>
-            <div className="flex gap-20">
+            <div className="flex md:gap-20 gap-3 md:flex-row flex-col">
               <div className="space-y-5 mt-2">
                 {data1.map((item, index) => (
                   <AnimatedCard direction="left">
                     <div key={index} className="font-[600] flex gap-2">
-                      <h1 className="text-gray-200">{item.title}:</h1>
-                      <h1 className="text-gray-400">{item.value}</h1>
+                      <h1 className="text-gray-200 md:text-lg text-sm">{item.title}:</h1>
+                      <h1 className="text-gray-400 md:text-lg text-sm">{item.value}</h1>
                     </div>
                   </AnimatedCard>
                 ))}
@@ -208,8 +215,8 @@ const About = () => {
                 {data2.map((item, index) => (
                   <AnimatedCard direction="down">
                     <div key={index} className="font-[600] flex gap-2">
-                      <h1 className="text-gray-200">{item.title}:</h1>
-                      <h1 className="text-gray-400">{item.value}</h1>
+                      <h1 className="text-gray-200 md:text-lg text-sm">{item.title}:</h1>
+                      <h1 className="text-gray-400 md:text-lg text-sm">{item.value}</h1>
                     </div>
                   </AnimatedCard>
                 ))}
@@ -245,11 +252,11 @@ const About = () => {
             </AnimatedCard>
           </div>
 
-          <div className="min-w-[800px] flex flex-col items-center gap-5">
+          <div className="min-w-full md:min-w-[800px] flex flex-col items-center gap-5">
             <AnimatedCard direction="left">
               <h1 className="text-2xl font-[800] text-gray-100 mb-4">SKILLS</h1>
             </AnimatedCard>
-            <div className="flex gap-8">
+            <div className="md:flex gap-8">
               {["html", "css", "javascript", "react", "nextjs"].map((skill) => (
                 <AnimatedCard direction="down">
                   <div key={skill} className="flex flex-col items-center gap-2">
@@ -259,7 +266,7 @@ const About = () => {
                 </AnimatedCard>
               ))}
             </div>
-            <div className="flex gap-8">
+            <div className="md:flex gap-8">
               {["tailwindcss", "nodejs", "expressjs", "mongoDB"].map(
                 (skill) => (
                   <AnimatedCard direction="up">
@@ -276,7 +283,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="bg-black text-white px-6 md:px-20 min-w-[800px]">
+          <div className="bg-black text-white px-6 md:px-20 md:min-w-[800px]">
             <AnimatedCard direction="right">
               <h2 className="text-3xl font-bold text-center mb-12">
                 EXPERIENCE & EDUCATION
