@@ -219,7 +219,7 @@ const About = () => {
           } gap-10 px-5 md:px-10 py-5`}
         >
           <div className="min-w-full md:min-w-[700px]">
-            <h1 className="text-2xl font-[800] text-gray-100 mb-4">
+            <h1 className="text-xl md:text-2xl font-[800] text-gray-100 mb-4">
               PERSONAL INFOS
             </h1>
             <div className="flex md:gap-20 gap-3 md:flex-row flex-col">
@@ -284,7 +284,7 @@ const About = () => {
 
           <div className="min-w-full md:min-w-[800px] flex flex-col items-center gap-5">
             <AnimatedCard direction="left">
-              <h1 className="text-2xl font-[800] text-gray-100 mb-4">SKILLS</h1>
+              <h1 className="text-xl md:text-2xl font-[800] text-gray-100 mb-4">SKILLS</h1>
             </AnimatedCard>
 
             {/* Desktop View */}
@@ -363,7 +363,7 @@ const About = () => {
 
           <div className="min-w-full md:min-w-[800px] bg-black text-white px-0 md:px-20">
             <AnimatedCard direction="right">
-              <h2 className="text-3xl font-bold text-center mb-12">
+              <h2 className="text-xl md:text-2xl font-[800] text-center mb-12">
                 EXPERIENCE & EDUCATION
               </h2>
             </AnimatedCard>
