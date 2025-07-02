@@ -25,6 +25,13 @@ export default function RootLayout({ children }) {
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{
+          backgroundImage:
+            "url('https://media0.giphy.com/media/8PEbUBEwxktyNeqVZ4/giphy.gif?cid=6c09b952wgjowjczfj4zfj8z3yb47qg55kt9bwmjprfuo1j9&ep=v1_gifs_search&rid=giphy.gif&ct=g')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         {children}
       </body>

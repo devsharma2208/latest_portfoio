@@ -65,8 +65,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
-      {/* 🎉 Lottie Animation Overlay */}
+    <div className="min-h-screen text-white relative">
+     
       {isSent && (
         <div className="fixed inset-0 z-[999] bg-black/70 flex justify-center items-center">
           <Lottie
@@ -77,7 +77,7 @@ const Contact = () => {
         </div>
       )}
 
-      <div className="sticky top-0 bg-black z-10 pb-10">
+      <div className="sticky top-0 bg-black md:bg-transparent z-10 pb-10">
         <Header />
         <div className="flex flex-col justify-center items-center mr-20 md:ml-30 w-full md:w-auto">
           <div className="w-full flex justify-center items-center md:my-8">

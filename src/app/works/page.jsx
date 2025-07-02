@@ -160,12 +160,12 @@ const Works = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="sticky top-0 bg-black z-50 pb-10">
+    <div className="min-h-screen text-white">
+      <div className="sticky top-0 bg-black md:bg-transparent z-50 pb-10">
         <Header />
         <div className="flex flex-col justify-center items-center mr-20 md:ml-30 w-full md:w-auto">
           <div className="w-full flex justify-center items-center md:my-8">
-            <div className="relative flex items-center justify-center mt-24 md:mt-6 md:my-0">
+            <div className="relative flex items-center justify-center mt-24 md:mt-0 md:my-0">
               <h1 className="md:text-8xl text-5xl font-[900] text-gray-800">
                 WORKS
               </h1>

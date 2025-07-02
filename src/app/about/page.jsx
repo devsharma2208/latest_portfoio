@@ -188,8 +188,8 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="sticky top-0 bg-black pb-10 z-50">
+    <div className="min-h-screen  text-white">
+      <div className="sticky top-0 bg-black md:bg-transparent pb-10 z-50">
         <Header />
         <div className="flex justify-center items-center">
           <div className="relative flex items-center justify-center mt-24 md:mt-8 md:my-10">
@@ -361,7 +361,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="min-w-full md:min-w-[800px] bg-black text-white px-0 md:px-20">
+          <div className="min-w-full md:min-w-[800px] text-white px-0 md:px-20">
             <AnimatedCard direction="right">
               <h2 className="text-xl md:text-2xl font-[800] text-center mb-12">
                 EXPERIENCE & EDUCATION
