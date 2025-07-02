@@ -5,6 +5,7 @@ import React from "react";
 const MainContent = () => {
   const button_name = {
     title: "More about me",
+    route: "/about",
   };
   return (
     <div className="">
@@ -31,7 +32,7 @@ const MainContent = () => {
           </p>
         </div>
         <div className="items-start w-full sm:ml-12 sm:mt-0 mt-20">
-          <Button title={button_name.title} />
+          <Button title={button_name.title} route={button_name?.route} />
         </div>
       </div>
     </div>

@@ -1,13 +1,25 @@
+"use client"; // 👈 required for client components in App Router
+
 import React from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { FaDownload } from "react-icons/fa6";
 import { IoIosSend } from "react-icons/io";
+import { useRouter } from "next/navigation"; // ✅ App Router version
 
 const Button = (props) => {
-  console.log(props);
+  const router = useRouter(); // ✅ use from next/navigation
+
+  const handleClick = () => {
+    if (props.title === "More about me") {
+      router.push("/about"); // ✅ works with App Router
+    }
+  };
 
   return (
-    <div className="group relative inline-block overflow-hidden rounded-full border-2 border-[#72b626] ">
+    <div
+      className="group relative inline-block overflow-hidden rounded-full border-2 border-[#72b626]"
+      onClick={handleClick}
+    >
       <div className="absolute inset-0 bg-[#72b626] w-full translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></div>
       <div className="relative flex items-center gap-10 cursor-pointer">
         <button

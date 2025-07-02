@@ -7,7 +7,6 @@ import { FaBriefcase, FaGraduationCap } from "react-icons/fa";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import confetti from "canvas-confetti";
 
-// Animation wrapper
 const AnimatedCard = ({ children, direction = "left" }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -46,9 +45,22 @@ const About = () => {
   const [maxScroll, setMaxScroll] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
+  const skillsValue = {
+    html: { key: "90" },
+    css: { key: "90" },
+    javascript: { key: "85" },
+    react: { key: "90" },
+    nextjs: { key: "80" },
+    tailwindcss: { key: "85" },
+    reactNative: { key: "80" },
+    nodejs: { key: "80" },
+    expressjs: { key: "75" },
+    mongoDB: { key: "75" },
+  };
+
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Tailwind md breakpoint
+      setIsMobile(window.innerWidth <= 768);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -104,7 +116,7 @@ const About = () => {
       title: "MERN Stack Developer & React Native Developer",
       company: "Pearl Organisation",
       description:
-        "MERN Stack & React Native Developer with hands-on experience in building dynamic, scalable web and mobile applications. Successfully created a finance and society management application with seamless UI and efficient backend integration.",
+        "MERN Stack & React Native Developer with hands-on experience in building dynamic, scalable web and mobile applications.",
     },
     {
       type: "education",
@@ -112,7 +124,7 @@ const About = () => {
       title: "MCA",
       company: "Uttranchal University",
       description:
-        "Pursuing a Master of Computer Applications (MCA) degree at Uttranchal University, focusing on advanced software development, database management, and IT solutions.",
+        "Pursuing MCA focused on advanced software development, database management, and IT solutions.",
     },
     {
       type: "experience",
@@ -120,29 +132,38 @@ const About = () => {
       title: "Front end Developer",
       company: "ByteWorld It Services",
       description:
-        "Completed a comprehensive Full Stack Development Certification from Newton School, with hands-on experience in building responsive web applications using technologies like HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB. Gained practical knowledge through real-world projects and collaborative coding environments.",
+        "Built responsive web applications using HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB.",
     },
     {
       type: "education",
       year: "Jan / 2023 - June / 2024",
       title: "Full Stack Development Certificate",
-      company: "Newtown School",
+      company: "Newton School",
       description:
         "Completed Full Stack course using HTML, CSS, JS, React, Node, Express, MongoDB.",
     },
   ];
-  const skillsValue = {
-    html: { key: "90" },
-    css: { key: "90" },
-    javascript: { key: "85" },
-    react: { key: "90" },
-    nextjs: { key: "80" },
-    tailwindcss: { key: "85" },
-    reactNative: { key: "80" },
-    nodejs: { key: "80" },
-    expressjs: { key: "75" },
-    mongoDB: { key: "75" },
-  };
+
+  const [sortedTimeline, setSortedTimeline] = useState(timeline);
+
+  useEffect(() => {
+    const handleSort = () => {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        const experience = timeline.filter(
+          (item) => item.type === "experience"
+        );
+        const education = timeline.filter((item) => item.type === "education");
+        setSortedTimeline([...experience, ...education]);
+      } else {
+        setSortedTimeline(timeline); // keep original order
+      }
+    };
+
+    handleSort();
+    window.addEventListener("resize", handleSort);
+    return () => window.removeEventListener("resize", handleSort);
+  }, []);
 
   const launchConfetti = () => {
     const duration = 3000;
@@ -153,7 +174,6 @@ const About = () => {
       ticks: 60,
       zIndex: 1000,
     };
-
     const interval = setInterval(() => {
       const timeLeft = animationEnd - Date.now();
       if (timeLeft <= 0) return clearInterval(interval);
@@ -169,11 +189,13 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="sticky top-0 bg-black z-10 pb-10">
+      <div className="sticky top-0 bg-black pb-10 z-50">
         <Header />
         <div className="flex justify-center items-center">
-          <div className="relative flex items-center justify-center mt-24 md:mt-8 my-10 ">
-            <h1 className="md:text-8xl text-5xl font-[900] text-gray-800">RESUME</h1>
+          <div className="relative flex items-center justify-center mt-24 md:mt-8 md:my-10">
+            <h1 className="md:text-8xl text-5xl font-[900] text-gray-800">
+              RESUME
+            </h1>
             <h1 className="absolute md:top-6 text-3xl md:text-5xl font-[900] text-gray-100 flex gap-5">
               <span>ABOUT</span> <span className="text-[#72b626]">ME</span>
             </h1>
@@ -183,9 +205,9 @@ const About = () => {
 
       <div
         ref={containerRef}
-        className={`${
-          isMobile ? "overflow-auto" : "overflow-hidden"
-        } w-full cursor-grab active:cursor-grabbing pl-5 md:pl-20`}
+        className={`w-full ${
+          isMobile ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden"
+        } cursor-grab active:cursor-grabbing pl-2 md:pl-20`}
       >
         <motion.div
           ref={scrollRef}
@@ -193,30 +215,38 @@ const About = () => {
           drag={isMobile ? false : "x"}
           dragConstraints={isMobile ? {} : { left: -maxScroll, right: 0 }}
           className={`${
-            isMobile ? "flex flex-col" : "flex flex-row"
-          } gap-10 px-5 md:px-10 py-5 w-max`}
+            isMobile ? "flex flex-col w-full" : "flex flex-row w-max"
+          } gap-10 px-5 md:px-10 py-5`}
         >
-          <div className="min-w-[700px]">
+          <div className="min-w-full md:min-w-[700px]">
             <h1 className="text-2xl font-[800] text-gray-100 mb-4">
               PERSONAL INFOS
             </h1>
             <div className="flex md:gap-20 gap-3 md:flex-row flex-col">
               <div className="space-y-5 mt-2">
                 {data1.map((item, index) => (
-                  <AnimatedCard direction="left">
-                    <div key={index} className="font-[600] flex gap-2">
-                      <h1 className="text-gray-200 md:text-lg text-sm">{item.title}:</h1>
-                      <h1 className="text-gray-400 md:text-lg text-sm">{item.value}</h1>
+                  <AnimatedCard direction="left" key={index}>
+                    <div className="font-[600] flex gap-2">
+                      <h1 className="text-gray-200 md:text-lg text-sm">
+                        {item.title}:
+                      </h1>
+                      <h1 className="text-gray-400 md:text-lg text-sm">
+                        {item.value}
+                      </h1>
                     </div>
                   </AnimatedCard>
                 ))}
               </div>
               <div className="space-y-5 mt-2">
                 {data2.map((item, index) => (
-                  <AnimatedCard direction="down">
-                    <div key={index} className="font-[600] flex gap-2">
-                      <h1 className="text-gray-200 md:text-lg text-sm">{item.title}:</h1>
-                      <h1 className="text-gray-400 md:text-lg text-sm">{item.value}</h1>
+                  <AnimatedCard direction="down" key={index}>
+                    <div className="font-[600] flex gap-2">
+                      <h1 className="text-gray-200 md:text-lg text-sm">
+                        {item.title}:
+                      </h1>
+                      <h1 className="text-gray-400 md:text-lg text-sm">
+                        {item.value}
+                      </h1>
                     </div>
                   </AnimatedCard>
                 ))}
@@ -229,7 +259,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="min-w-[300px] space-y-4">
+          <div className="min-w-full md:min-w-[300px] space-y-4">
             <AnimatedCard direction="down">
               <div className="uppercase max-w-80 border border-gray-300 rounded-lg py-10 px-5">
                 <h1 className="text-4xl font-[800] text-[#72b626]">
@@ -256,24 +286,23 @@ const About = () => {
             <AnimatedCard direction="left">
               <h1 className="text-2xl font-[800] text-gray-100 mb-4">SKILLS</h1>
             </AnimatedCard>
-            <div className="md:flex gap-8">
+
+            {/* Desktop View */}
+            <div className="hidden md:flex gap-8">
               {["html", "css", "javascript", "react", "nextjs"].map((skill) => (
-                <AnimatedCard direction="down">
-                  <div key={skill} className="flex flex-col items-center gap-2">
+                <AnimatedCard direction="down" key={skill}>
+                  <div className="flex flex-col items-center gap-2">
                     <CircularProgress value={skillsValue[skill].key} />
                     <h1>{skill.toUpperCase()}</h1>
                   </div>
                 </AnimatedCard>
               ))}
             </div>
-            <div className="md:flex gap-8">
+            <div className="hidden md:flex gap-8">
               {["tailwindcss", "nodejs", "expressjs", "mongoDB"].map(
                 (skill) => (
-                  <AnimatedCard direction="up">
-                    <div
-                      key={skill}
-                      className="flex flex-col items-center gap-2"
-                    >
+                  <AnimatedCard direction="up" key={skill}>
+                    <div className="flex flex-col items-center gap-2">
                       <CircularProgress value={skillsValue[skill].key} />
                       <h1>{skill.replace(/([A-Z])/g, " $1").toUpperCase()}</h1>
                     </div>
@@ -281,18 +310,67 @@ const About = () => {
                 )
               )}
             </div>
+
+            {/* Mobile Zig-Zag View */}
+            <div className="flex md:hidden flex-col gap-6 w-full items-center">
+              {(() => {
+                const skills = [
+                  "html",
+                  "css",
+                  "javascript",
+                  "react",
+                  "nextjs",
+                  "tailwindcss",
+                  "nodejs",
+                  "expressjs",
+                  "mongoDB",
+                ];
+                const chunks = [];
+                let i = 0;
+                let toggle = true;
+                while (i < skills.length) {
+                  if (toggle) {
+                    chunks.push(skills.slice(i, i + 2));
+                    i += 2;
+                  } else {
+                    chunks.push(skills.slice(i, i + 1));
+                    i += 1;
+                  }
+                  toggle = !toggle;
+                }
+                return chunks.map((chunk, index) => (
+                  <div
+                    key={index}
+                    className={`flex ${
+                      chunk.length === 1 ? "justify-center" : "justify-between"
+                    } gap-4 w-full px-10`}
+                  >
+                    {chunk.map((skill) => (
+                      <AnimatedCard direction="up" key={skill}>
+                        <div className="flex flex-col items-center gap-2">
+                          <CircularProgress value={skillsValue[skill].key} />
+                          <h1>
+                            {skill.replace(/([A-Z])/g, " $1").toUpperCase()}
+                          </h1>
+                        </div>
+                      </AnimatedCard>
+                    ))}
+                  </div>
+                ));
+              })()}
+            </div>
           </div>
 
-          <div className="bg-black text-white px-6 md:px-20 md:min-w-[800px]">
+          <div className="min-w-full md:min-w-[800px] bg-black text-white px-0 md:px-20">
             <AnimatedCard direction="right">
               <h2 className="text-3xl font-bold text-center mb-12">
                 EXPERIENCE & EDUCATION
               </h2>
             </AnimatedCard>
-            <div className="grid md:grid-cols-2 gap-5">
-              {timeline.map((item, index) => (
-                <AnimatedCard direction="up">
-                  <div key={index} className="relative pl-12 w-3xl">
+            <div className="grid md:grid-cols-2 gap-5 w-full max-w-screen-lg">
+              {sortedTimeline.map((item, index) => (
+                <AnimatedCard direction="up" key={index}>
+                  <div className="relative pl-12 w-full">
                     <div className="absolute left-0 top-0 flex flex-col items-center">
                       <div className="w-10 h-10 bg-lime-500 rounded-full flex items-center justify-center text-white text-lg z-10">
                         {item.type === "experience" ? (
@@ -308,18 +386,18 @@ const About = () => {
                         />
                       )}
                     </div>
-                    <div className="mb-1">
+                    <div className="mb-1 ml-2">
                       <span className="bg-gray-800 text-white text-xs px-3 py-1 rounded-full">
                         {item.year}
                       </span>
                     </div>
-                    <h3 className="font-bold text-white">
+                    <h3 className="font-bold text-white ml-2">
                       {item.title}{" "}
                       <span className="text-gray-400 font-semibold">
                         — {item.company}
                       </span>
                     </h3>
-                    <p className="text-gray-400 mt-2 text-sm text-justify">
+                    <p className="text-gray-400 mt-2 text-sm text-justify ml-2">
                       {item.description}
                     </p>
                   </div>
