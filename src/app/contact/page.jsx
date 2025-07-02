@@ -95,7 +95,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:pb-0 pb-10 md:flex-row justify-between gap-20 mt-10 px-5 md:px-10 md:ml-20">
+      <div className="flex flex-col md:pb-0 pb-10 md:flex-row justify-between gap-20 mt-7 md:mt-10 px-5 md:px-10 md:ml-20">
         <div className="md:w-1/3 space-y-6">
           <h1 className="md:text-4xl text-2xl font-extrabold">DON'T BE SHY!</h1>
           <p className="mt-5 text-justify font-light text-gray-300">
