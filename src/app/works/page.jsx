@@ -11,6 +11,34 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
+const containerVariant = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const letterVariant = (i) => {
+  const directions = [
+    { x: -40, y: 0 },
+    { x: 40, y: 0 },
+    { x: 0, y: 40 },
+    { x: 0, y: -40 },
+  ];
+  const dir = directions[i % directions.length];
+  return {
+    hidden: { opacity: 0, ...dir },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: { duration: 0.6 },
+    },
+  };
+};
+
 const Works = () => {
   const [isMobile, setIsMobile] = useState(false);
   const scrollRef = useRef(null);
@@ -160,20 +188,43 @@ const Works = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-white md:overflow-y-hidden">
       <div className="sticky top-0 bg-black md:bg-transparent z-50 pb-10">
         <Header />
-        <div className="flex flex-col justify-center items-center mr-20 md:ml-30 w-full md:w-auto">
+        <div className="flex flex-col justify-center items-center w-full">
           <div className="w-full flex justify-center items-center md:my-8">
-            <div className="relative flex items-center justify-center mt-24 md:mt-0 md:my-0">
-              <h1 className="md:text-8xl text-5xl font-[900] text-gray-800">
-                WORKS
-              </h1>
-              <h1 className="absolute md:top-6 text-3xl md:text-5xl font-[900] text-gray-100 flex gap-5">
-                <span>MY</span>
-                <span className="text-[#72b626]">PORTFOLIO</span>
-              </h1>
-            </div>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariant}
+              className="relative flex items-center justify-center mt-24 md:mt-0 md:my-0"
+            >
+              <motion.h1
+                variants={containerVariant}
+                className="md:text-8xl text-5xl font-[900] text-gray-800 tracking-[0.1rem] flex gap-1"
+              >
+                {"WORKS".split("").map((char, i) => (
+                  <motion.span key={i} variants={letterVariant(i)}>
+                    {char}
+                  </motion.span>
+                ))}
+              </motion.h1>
+
+              <motion.h1
+                variants={containerVariant}
+                className="absolute md:top-6 text-3xl md:text-5xl font-[900] text-gray-100 flex gap-0.5"
+              >
+                {"MY PORTFOLIO".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    variants={letterVariant(i)}
+                    className={char === " " ? "mx-2" : ""}
+                  >
+                    <span className={"PORTFOLIO".includes(char) ? "text-[#72b626]" : ""}>{char}</span>
+                  </motion.span>
+                ))}
+              </motion.h1>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -186,7 +237,7 @@ const Works = () => {
       >
         <motion.div
           style={{ x: isMobile ? 0 : springX }}
-          className="flex flex-col md:flex-row md:w-max gap-10 px-5 py-5"
+          className="flex flex-col md:flex-row md:w-max gap-10 px-5 py-5 md:h-[calc(100vh-200px)] overflow-y-hidden"
         >
           {projects.map((project, index) => (
             <motion.div
@@ -205,11 +256,10 @@ const Works = () => {
                   alt="project image"
                   width={400}
                   height={200}
-                  className={`rounded-lg ${
-                    ["Casham", "3B Profiles"].includes(project.title)
-                      ? "object-contain"
-                      : "object-cover"
-                  } w-full h-full`}
+                  className={`rounded-lg ${["Casham", "3B Profiles"].includes(project.title)
+                    ? "object-contain"
+                    : "object-cover"
+                    } w-full h-full`}
                 />
                 <div className="absolute inset-0 bg-[#72b626] bg-opacity-80 text-white flex flex-col justify-center items-start p-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
                   <h4 className="font-medium mb-2 text-sm">Features:</h4>

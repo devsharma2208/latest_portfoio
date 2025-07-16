@@ -45,6 +45,35 @@ const About = () => {
   const [maxScroll, setMaxScroll] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
+  const containerVariant = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const letterVariant = (i) => {
+    const directions = [
+      { x: -50, y: 0 },
+      { x: 50, y: 0 },
+      { x: 0, y: 50 },
+      { x: 0, y: -50 },
+    ];
+    const dir = directions[i % directions.length];
+
+    return {
+      hidden: { opacity: 0, ...dir },
+      visible: {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        transition: { duration: 0.6 },
+      },
+    };
+  };
+
   const skillsValue = {
     html: { key: "90" },
     css: { key: "90" },
@@ -109,6 +138,7 @@ const About = () => {
     { title: "Email", value: "devsharmaelc@gmail.com" },
     { title: "Current Organisation", value: "Pearl Organisation" },
   ];
+
   const timeline = [
     {
       type: "experience",
@@ -142,8 +172,7 @@ const About = () => {
       description:
         "Completed Full Stack course using HTML, CSS, JS, React, Node, Express, MongoDB.",
     },
-  ];
-
+  ]; // your existing timeline array
   const [sortedTimeline, setSortedTimeline] = useState(timeline);
 
   useEffect(() => {
@@ -156,7 +185,7 @@ const About = () => {
         const education = timeline.filter((item) => item.type === "education");
         setSortedTimeline([...experience, ...education]);
       } else {
-        setSortedTimeline(timeline); // keep original order
+        setSortedTimeline(timeline);
       }
     };
 
@@ -188,17 +217,44 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen  text-white">
+    <div className="min-h-screen text-white">
       <div className="sticky top-0 bg-black md:bg-transparent pb-10 z-50">
         <Header />
         <div className="flex justify-center items-center">
           <div className="relative flex items-center justify-center mt-24 md:mt-8 md:my-10">
-            <h1 className="md:text-8xl text-5xl font-[900] text-gray-800">
-              RESUME
-            </h1>
-            <h1 className="absolute md:top-6 text-3xl md:text-5xl font-[900] text-gray-100 flex gap-5">
-              <span>ABOUT</span> <span className="text-[#72b626]">ME</span>
-            </h1>
+            {/* RESUME Animated from different sides */}
+            <motion.h1
+              variants={containerVariant}
+              initial="hidden"
+              animate="visible"
+              className="md:text-8xl text-5xl font-[900] text-gray-800 tracking-[0.1rem] flex gap-1"
+            >
+              {"RESUME".split("").map((char, i) => (
+                <motion.span key={i} variants={letterVariant(i)}>
+                  {char}
+                </motion.span>
+              ))}
+            </motion.h1>
+
+            {/* ABOUT ME Animated from different sides */}
+            <motion.h1
+              className="absolute md:top-6 text-3xl md:text-5xl font-[900] text-gray-100 flex gap-2"
+              variants={containerVariant}
+              initial="hidden"
+              animate="visible"
+            >
+              {"ABOUT ME".split("").map((letter, i) => (
+                <motion.span
+                  key={i}
+                  variants={letterVariant(i)}
+                  className={
+                    letter === "M" || letter === "E" ? "text-[#72b626]" : ""
+                  }
+                >
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.h1>
           </div>
         </div>
       </div>
@@ -284,7 +340,9 @@ const About = () => {
 
           <div className="min-w-full md:min-w-[800px] flex flex-col items-center gap-5">
             <AnimatedCard direction="left">
-              <h1 className="text-xl md:text-2xl font-[800] text-gray-100 mb-4">SKILLS</h1>
+              <h1 className="text-xl md:text-2xl font-[800] text-gray-100 mb-4">
+                SKILLS
+              </h1>
             </AnimatedCard>
 
             {/* Desktop View */}

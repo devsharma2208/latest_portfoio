@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/pages/Header/page";
 import MainContent from "@/pages/MainContent/page";
 import Image from "@/pages/photo/page";
-import logo from '../Images/logo.png'
+import logo from "../Images/logo.png";
 
 const text = "Welcome to Dev Sharma’s Portfolio";
 
@@ -35,9 +35,8 @@ export default function Home() {
           transition={{ duration: 1 }}
           className="fixed inset-0 w-screen h-screen flex flex-col items-center justify-center bg-black text-white overflow-hidden z-[9999]"
         >
-          {/* LOGO */}
           <motion.img
-            src="/logo.png" 
+            src="/logo.png"
             alt="Logo"
             initial={{ scale: 0, rotate: 180 }}
             animate={{ scale: 1, rotate: 0 }}
@@ -46,7 +45,6 @@ export default function Home() {
             className="w-20 h-20 mb-6"
           />
 
-          {/* Animated Letters */}
           <motion.div className="flex flex-wrap justify-center text-3xl md:text-5xl font-bold text-center px-4">
             {text.split("").map((char, i) => (
               <motion.span
