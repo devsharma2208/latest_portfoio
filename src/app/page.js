@@ -18,7 +18,6 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Random animation direction for letters
   const randomDirection = () => {
     const dirs = [-50, 50];
     return dirs[Math.floor(Math.random() * dirs.length)];
@@ -64,7 +63,6 @@ export default function Home() {
           </motion.div>
         </motion.div>
       ) : (
-        // Main content with entry animation
         <motion.div
           key="main"
           initial={{ opacity: 0, y: 40 }}
@@ -73,9 +71,9 @@ export default function Home() {
           className="sm:min-h-screen h-fit"
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-screen sm:px-4 lg:px-32 gap-4 z-20">
-            <Header />
-            <MainContent />
-            <Image />
+            <Header className="order-1 lg:order-none" />
+            <MainContent className="order-2 md:order-3" />
+            <Image className="order-3 md:order-2" />
           </div>
         </motion.div>
       )}
