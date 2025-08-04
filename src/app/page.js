@@ -4,19 +4,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/pages/Header/page";
 import MainContent from "@/pages/MainContent/page";
 import Image from "@/pages/photo/page";
-import logo from "../Images/logo.png";
 
 const text = "Welcome to Dev Sharma’s Portfolio";
 
 export default function Home() {
-  const [showLanding, setShowLanding] = useState(true);
+  const [showLanding, setShowLanding] = useState(
+    () => !sessionStorage.getItem("seenLanding")
+  );
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowLanding(false);
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (showLanding) {
+      sessionStorage.setItem("seenLanding", "true");
+      const timer = setTimeout(() => {
+        setShowLanding(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showLanding]);
 
   const randomDirection = () => {
     const dirs = [-50, 50];
@@ -43,7 +47,6 @@ export default function Home() {
             transition={{ duration: 1 }}
             className="w-20 h-20 mb-6"
           />
-
           <motion.div className="flex flex-wrap justify-center text-3xl md:text-5xl font-bold text-center px-4">
             {text.split("").map((char, i) => (
               <motion.span

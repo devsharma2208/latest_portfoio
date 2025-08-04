@@ -20,14 +20,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Optional: include placeholder static JS to avoid 404 */}
         <script src="/static/js/placeholder.js" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{
-          // backgroundImage:
-          //   "url('https://media0.giphy.com/media/8PEbUBEwxktyNeqVZ4/giphy.gif?cid=6c09b952wgjowjczfj4zfj8z3yb47qg55kt9bwmjprfuo1j9&ep=v1_gifs_search&rid=giphy.gif&ct=g')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
