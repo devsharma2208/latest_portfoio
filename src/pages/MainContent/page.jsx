@@ -22,7 +22,8 @@ const MainContent = () => {
             <h1 className="sm:text-3xl text-xl px-0 pt-1 text-green-700 z-20">
               APPLICATION DEVELOPER
             </h1> */}
-            <span className="sm:text-3xl text-xl px-0 pt-1 z-20 font-semibold tracking-wide">
+            <span className="sm:text-3xl text-xl px-0 pt-1 z-20 font-semibold tracking-wide" style={{ display: "inline-block" }}>
+
               <ReactTyped
                 strings={[
                   `<span class='text-red-500'>Front-End Developer</span>`,

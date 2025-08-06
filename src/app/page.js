@@ -8,24 +8,36 @@ import Image from "@/pages/photo/page";
 const text = "Welcome to Dev Sharma’s Portfolio";
 
 export default function Home() {
-  const [showLanding, setShowLanding] = useState(() =>
-    sessionStorage.getItem("seenLanding") ? false : true
-  );
+  const [hasMounted, setHasMounted] = useState(false);
+  const [showLanding, setShowLanding] = useState(false);
 
   useEffect(() => {
-    if (showLanding) {
-      sessionStorage.setItem("seenLanding", "true");
-      const timer = setTimeout(() => {
-        setShowLanding(false);
-      }, 5000);
-      return () => clearTimeout(timer);
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (hasMounted) {
+      const hasSeenLanding = sessionStorage.getItem("seenLanding");
+      if (!hasSeenLanding) {
+        setShowLanding(true);
+        sessionStorage.setItem("seenLanding", "true");
+
+        const timer = setTimeout(() => {
+          setShowLanding(false);
+        }, 5000);
+
+        return () => clearTimeout(timer);
+      }
     }
-  }, [showLanding]);
+  }, [hasMounted]);
 
   const randomDirection = () => {
     const dirs = [-50, 50];
     return dirs[Math.floor(Math.random() * dirs.length)];
   };
+
+  // 🛡 Prevent SSR mismatch
+  if (!hasMounted) return null;
 
   return (
     <AnimatePresence mode="wait">
