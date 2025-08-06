@@ -8,8 +8,8 @@ import Image from "@/pages/photo/page";
 const text = "Welcome to Dev Sharma’s Portfolio";
 
 export default function Home() {
-  const [showLanding, setShowLanding] = useState(
-    () => !sessionStorage.getItem("seenLanding")
+  const [showLanding, setShowLanding] = useState(() =>
+    sessionStorage.getItem("seenLanding") ? false : true
   );
 
   useEffect(() => {

@@ -146,7 +146,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between gap-20 mt-7 md:mt-10 px-5 md:px-10 w-full max-w-[1300px]  pb-10 md:pb-0 md:mx-16">
+      <div className="flex flex-col md:flex-row justify-between gap-20 mt-7 md:mt-0 px-5 md:px-10 w-full max-w-[1300px]  pb-10 md:pb-0 md:mx-16">
         <motion.div
           className="md:w-1/3 space-y-6"
           initial="hidden"
@@ -170,9 +170,10 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             <p className="mt-5 text-justify font-light text-gray-300">
-              Feel free to get in touch with me. I’m always open to discussing
-              new projects, creative ideas, or opportunities to be part of your
-              vision.
+              I'm Dev Sharma, a passionate MERN Stack Developer focused on
+              building scalable, user-friendly web apps. I'm always open to new
+              opportunities, exciting projects, and creative collaborations.
+              Let’s connect and bring your ideas to life!
             </p>
           </motion.div>
 
