@@ -49,7 +49,7 @@ const MainContent = () => {
             </span>
           </div>
         </div>
-        <div className="text-gray-200 text-xl sm:p-6 sm:mt-0 mt-5 font-[sans] text-justify z-20">
+        <div className="text-gray-200 text-xl sm:p-6 sm:mt-0  font-[sans] text-justify z-20">
           <p>
             I'm a DEV SHARMA based web designer & front‑end developer focused on
             crafting clean & user‑friendly experiences, I am passionate about

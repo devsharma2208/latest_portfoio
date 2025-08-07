@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/pages/Header/page";
 import MainContent from "@/pages/MainContent/page";
 import Image from "@/pages/photo/page";
+import { FaEnvelope, FaGithub, FaLinkedin, FaUserTie } from "react-icons/fa";
 
 const text = "Welcome to Dev Sharma’s Portfolio";
 
@@ -89,6 +90,44 @@ export default function Home() {
             <Header className="order-1 lg:order-none" />
             <MainContent className="order-2 md:order-3" />
             <Image className="order-3 md:order-2" />
+          </div>
+          <div className="fixed top-0 right-6 md:flex hidden flex-col items-center gap-10 z-50 h-screen justify-center">
+            <a
+              href="https://www.linkedin.com/in/dev-sharma-007301173/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center bg-[#0A66C2] text-white rounded-full shadow-lg animate-pulse"
+              title="LinkedIn"
+            >
+              <FaLinkedin size={24} />
+            </a>
+
+            <a
+              href="https://github.com/devsharma2208"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center bg-[#171515] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
+              title="GitHub"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a
+              href="https://topmate.io/dev_sharma28"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center bg-[#4B0082] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
+              title="Topmate"
+            >
+              <FaUserTie size={22} />
+            </a>
+
+            <a
+              href="mailto:devsharmaelc@gmail.com"
+              className="w-12 h-12 flex items-center justify-center bg-[#D44638] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
+              title="Gmail"
+            >
+              <FaEnvelope size={22} />
+            </a>
           </div>
         </motion.div>
       )}
