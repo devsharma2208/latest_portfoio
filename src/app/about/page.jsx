@@ -262,7 +262,7 @@ const About = () => {
 
       <div
         ref={containerRef}
-        className={`w-full ${
+        className={`w-full bg-black/2 ${
           isMobile ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden"
         } cursor-grab active:cursor-grabbing pl-2 md:pl-20`}
       >
@@ -276,23 +276,29 @@ const About = () => {
           } gap-10 px-5 md:px-10 py-5`}
         >
           <div className="text-gray-200 text-xl sm:mt-0 mt-5 font-[sans] text-justify z-20  md:w-[400px] md:mr-10 pr-2">
-            <h1 className="text-xl md:text-xl font-[800] text-white mb-4">
-              Jr. Software Developer @Pearl | Building Casham | React JS
-              Developer | Crafting Exceptional User Experiences
-            </h1>
-            <p className="text-lg text-gray-300">
-              A passionate developer with a keen eye for design and a knack for
-              transforming ideas into engaging digital experiences. I am working
-              on my skills everyday to grow in market. I bring creativity and
-              functionality together to create web solutions that captivate and
-              delight users. You can contact me anytime for any freelance
-              projects like building your websites or portfolio.
-            </p>
+            <AnimatedCard direction="down">
+              <h1 className="text-xl md:text-xl font-[800] text-white mb-4">
+                Jr. Software Developer @Pearl | Building Casham | React JS
+                Developer | Crafting Exceptional User Experiences
+              </h1>
+            </AnimatedCard>
+            <AnimatedCard direction="up">
+              <p className="text-lg text-gray-300">
+                A passionate developer with a keen eye for design and a knack
+                for transforming ideas into engaging digital experiences. I am
+                working on my skills everyday to grow in market. I bring
+                creativity and functionality together to create web solutions
+                that captivate and delight users. You can contact me anytime for
+                any freelance projects like building your websites or portfolio.
+              </p>
+            </AnimatedCard>
           </div>
           <div className="min-w-full md:min-w-[700px]">
-            <h1 className="text-xl md:text-2xl font-[800] text-gray-100 mb-4">
-              PERSONAL INFOS
-            </h1>
+            <AnimatedCard direction="up">
+              <h1 className="text-xl md:text-2xl font-[800] text-gray-100 mb-4">
+                PERSONAL INFOS
+              </h1>
+            </AnimatedCard>
             <div className="flex md:gap-20 gap-3 md:flex-row flex-col">
               <div className="space-y-5 mt-2">
                 {data1.map((item, index) => (
