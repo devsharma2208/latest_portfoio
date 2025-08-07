@@ -220,6 +220,7 @@ const About = () => {
     <div className="min-h-screen text-white">
       <div className="sticky top-0 bg-black md:bg-transparent pb-10 z-50">
         <Header />
+
         <div className="flex justify-center items-center">
           <div className="relative flex items-center justify-center mt-24 md:mt-8 md:my-10">
             {/* RESUME Animated from different sides */}
@@ -274,6 +275,20 @@ const About = () => {
             isMobile ? "flex flex-col w-full" : "flex flex-row w-max"
           } gap-10 px-5 md:px-10 py-5`}
         >
+          <div className="text-gray-200 text-xl sm:mt-0 mt-5 font-[sans] text-justify z-20  md:w-[400px] md:mr-10 pr-2">
+            <h1 className="text-xl md:text-xl font-[800] text-white mb-4">
+              Jr. Software Developer @Pearl | Building Casham | React JS
+              Developer | Crafting Exceptional User Experiences
+            </h1>
+            <p className="text-lg text-gray-300">
+              A passionate developer with a keen eye for design and a knack for
+              transforming ideas into engaging digital experiences. I am working
+              on my skills everyday to grow in market. I bring creativity and
+              functionality together to create web solutions that captivate and
+              delight users. You can contact me anytime for any freelance
+              projects like building your websites or portfolio.
+            </p>
+          </div>
           <div className="min-w-full md:min-w-[700px]">
             <h1 className="text-xl md:text-2xl font-[800] text-gray-100 mb-4">
               PERSONAL INFOS
@@ -419,7 +434,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="min-w-full md:min-w-[800px] text-white px-0 md:px-20">
+          <div className="min-w-full md:min-w-[800px] text-white px-0 md:px-10">
             <AnimatedCard direction="right">
               <h2 className="text-xl md:text-2xl font-[800] text-center mb-12">
                 EXPERIENCE & EDUCATION

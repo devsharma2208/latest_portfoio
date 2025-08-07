@@ -11,19 +11,24 @@ const MainContent = () => {
   return (
     <div className="order-3 md:order-2 pb-10">
       <div className="flex flex-col sm:items-center sm:justify-center sm:mx-0 mx-5 mt-[8rem] sm:mt-[10rem] ">
-        <div className="font-bold ">
-          <h1 className="text-green-600 text-xl sm:text-5xl font-[poppins] z-20">
+        <div className="font-bold md:block hidden">
+          <h1 className="text-blue-100 text-xl sm:text-5xl font-[poppins] z-20">
+            Hi There,
+          </h1>
+          <h1 className="text-green-600 text-xl sm:text-5xl font-[poppins] z-20 mt-3">
             I'M DEV SHARMA
           </h1>
-          <div className="px-2 text-center">
+          <div className="text-start">
             {/* <h1 className="text-gray-500 text-2xl sm:text-5xl px-0 sm:pt-6 pt-2 sm:text-start text-end z-20">
               WEB DESIGNER /{" "}
             </h1>
             <h1 className="sm:text-3xl text-xl px-0 pt-1 text-green-700 z-20">
               APPLICATION DEVELOPER
             </h1> */}
-            <span className="sm:text-3xl text-xl px-0 pt-1 z-20 font-semibold tracking-wide" style={{ display: "inline-block" }}>
-
+            <span
+              className="sm:text-3xl text-xl px-0 pt-1 z-20 font-semibold tracking-wide mt-3"
+              style={{ display: "inline-block" }}
+            >
               <ReactTyped
                 strings={[
                   `<span class='text-red-500'>Front-End Developer</span>`,
@@ -33,7 +38,7 @@ const MainContent = () => {
                   `<span class='text-green-500'>Web Designer</span>`,
                   `<span class='text-purple-500'>Application Developer</span>`,
                 ]}
-                typeSpeed={200}
+                typeSpeed={100}
                 loop
                 backSpeed={50}
                 cursorChar="|"
