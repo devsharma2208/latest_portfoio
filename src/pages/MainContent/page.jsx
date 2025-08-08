@@ -50,7 +50,7 @@ const MainContent = () => {
           </div>
         </div>
         <div className="text-gray-200 text-xl sm:p-6 sm:mt-0  font-[sans] text-justify z-20">
-          <p>
+          <p className="md:mt-0 mt-20">
             I'm a DEV SHARMA based web designer & front‑end developer focused on
             crafting clean & user‑friendly experiences, I am passionate about
             building excellent software that improves the lives of those around
