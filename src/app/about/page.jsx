@@ -262,7 +262,7 @@ const About = () => {
 
       <div
         ref={containerRef}
-        className={`w-full bg-black/2 ${
+        className={`w-full bg-black ${
           isMobile ? "overflow-y-auto overflow-x-hidden" : "overflow-hidden"
         } cursor-grab active:cursor-grabbing pl-2 md:pl-20`}
       >
