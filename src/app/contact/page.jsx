@@ -89,7 +89,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden overflow-y-auto text-white relative">
+    <div className="min-h-screen w-full overflow-x-hidden overflow-y-auto text-white relative bg-black">
       {isSent && (
         <div className="fixed inset-0 z-[999] bg-black/70 flex justify-center items-center overflow-hidden">
           <div className="max-w-[90vw] max-h-[90vh] overflow-hidden">

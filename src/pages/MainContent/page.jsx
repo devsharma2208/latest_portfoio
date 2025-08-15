@@ -9,7 +9,7 @@ const MainContent = () => {
     route: "/about",
   };
   return (
-    <div className="order-3 md:order-2 pb-10">
+    <div className="order-3 md:order-2 pb-10 ">
       <div className="flex flex-col sm:items-center sm:justify-center sm:mx-0 mx-5 mt-[8rem] sm:mt-[10rem] ">
         <div className="font-bold md:block hidden">
           <h1 className="text-blue-100 text-xl sm:text-5xl font-[poppins] z-20">

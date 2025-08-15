@@ -217,7 +217,7 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-white bg-black">
       <div className="sticky top-0 bg-black md:bg-transparent pb-10 z-50">
         <Header />
 

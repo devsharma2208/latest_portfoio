@@ -188,7 +188,7 @@ const Works = () => {
   };
 
   return (
-    <div className="min-h-screen text-white md:overflow-y-hidden">
+    <div className="min-h-screen text-white md:overflow-y-hidden bg-black">
       <div className="sticky top-0 bg-black md:bg-transparent z-50 pb-10">
         <Header />
         <div className="flex flex-col justify-center items-center w-full">

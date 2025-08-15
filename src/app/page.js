@@ -86,7 +86,7 @@ export default function Home() {
           transition={{ duration: 1 }}
           className="sm:min-h-screen h-fit"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-screen sm:px-4 lg:px-32 gap-4 z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] min-h-screen sm:px-4 bg-black lg:px-32 gap-4 z-20">
             <Header className="order-1 lg:order-none" />
             <MainContent className="order-2 md:order-3" />
             <Image className="order-3 md:order-2" />
