@@ -30,7 +30,7 @@ const Header = () => {
               { href: "/about", icon: <FaUser />, label: "About" },
               { href: "/works", icon: <FaBriefcase />, label: "Portfolio" },
               { href: "/contact", icon: <FaEnvelopeOpen />, label: "Contact" },
-              { href: "/", icon: <FaComments />, label: "Blog" },
+              { href: "/blogs", icon: <FaComments />, label: "Blog" },
             ].map(({ href, icon, label }) => (
               <Link href={href} key={label} className="relative group">
                 <div className="text-lg font-bold border border-gray-900 rounded-full group-hover:border-yellow-400 group-hover:rounded-r-3xl p-3 bg-gray-900 text-white group-hover:bg-yellow-400 transition">
