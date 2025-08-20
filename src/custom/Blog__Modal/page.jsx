@@ -217,6 +217,15 @@ function App() {
                 </motion.div>
               ))}
             </>
+            <motion.p
+              className="text-gray-400 mb-4 italic font-sans text-justify"
+              variants={itemVariants}
+            >
+              Tip: Practice by creating small projects such as a to-do app, a
+              counter, or a simple blog. This hands-on experience will help you
+              understand React’s component-based architecture, props, state, and
+              lifecycle methods.{" "}
+            </motion.p>
           </motion.div>
         </motion.div>
       </motion.div>
