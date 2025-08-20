@@ -170,7 +170,7 @@ function App() {
               fill
               quality={100}
               priority
-              className="object-cover rounded-tl-2xl rounded-bl-2xl"
+              className="object-cover "
             />
           </motion.div>
 
