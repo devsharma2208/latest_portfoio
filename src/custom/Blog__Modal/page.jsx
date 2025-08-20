@@ -147,7 +147,7 @@ function App() {
         exit="exit"
       >
         <motion.div
-          className="relative bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-2xl max-w-6xl w-full flex flex-col md:flex-row max-h-[90vh] overflow-hidden"
+          className="relative bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-2xl max-w-6xl w-full flex flex-col md:flex-row max-h-[85vh] md:max-h-[90vh] overflow-hidden md:mx-0 mx-5"
           variants={modalVariants}
           initial="hidden"
           animate="visible"
