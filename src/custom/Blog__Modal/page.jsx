@@ -155,7 +155,7 @@ function App() {
         >
           <motion.button
             onClick={() => setIsOpen(false)}
-            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/30 backdrop-blur-md rounded-full hover:bg-white/50 transition shadow-lg cursor-pointer"
+            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/30 backdrop-blur-md rounded-full hover:bg-white/50 transition shadow-lg cursor-pointer z-50"
           >
             ✕
           </motion.button>
