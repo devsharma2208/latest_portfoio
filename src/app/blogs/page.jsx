@@ -9,7 +9,13 @@ import {
   faArrowUpRightFromSquare,
   faCode,
 } from "@fortawesome/free-solid-svg-icons";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
+import Blog__Modal from "@/custom/Blog__Modal/page";
 
 const containerVariant = {
   hidden: {},
@@ -88,7 +94,7 @@ const Blogs = () => {
   const blogs = [
     {
       title: "React Js for the Beginner's",
-      date: "August 15, 2025",
+      date: "August 20, 2025",
       img: require("../../Images/react_begineers.png"),
     },
   ];
@@ -200,29 +206,33 @@ const Blogs = () => {
           </div>
         </motion.div>
       </div>
-      {open && (
-        <div
-          className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              setOpen(false);
-            }
-          }}
-        >
-          <div className="bg-white p-6 rounded-2xl shadow-lg text-center w-[300px]">
-            <h2 className="text-lg font-semibold text-black">Coming Soon 🚀</h2>
-            <p className="text-gray-600 mt-2">
-              This feature is under development.
-            </p>
-            <button
-              onClick={() => setOpen(false)}
-              className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 cursor-pointer"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          // <div
+          //   className="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
+          //   onClick={(e) => {
+          //     if (e.target === e.currentTarget) {
+          //       setOpen(false);
+          //     }
+          //   }}
+          // >
+          //   <div className="bg-white p-6 rounded-2xl shadow-lg text-center w-[300px]">
+          //     <h2 className="text-lg font-semibold text-black">Coming Soon 🚀</h2>
+          //     <p className="text-gray-600 mt-2">
+          //       This feature is under development.
+          //     </p>
+          //     <button
+          //       onClick={() => setOpen(false)}
+          //       className="mt-4 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 cursor-pointer"
+          //     >
+          //       Close
+          //     </button>
+          //   </div>
+          // </div>
+
+          <Blog__Modal setIsOpen={setOpen} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
