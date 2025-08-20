@@ -175,7 +175,7 @@ function App() {
           </motion.div>
 
           <motion.div
-            className="p-6 md:w-2/3 flex flex-col overflow-y-auto max-h-[90vh] scrollbar-none"
+            className="md:p-6 p-3 md:w-2/3 flex flex-col overflow-y-auto max-h-[90vh] scrollbar-none"
             variants={itemVariants}
           >
             <>
