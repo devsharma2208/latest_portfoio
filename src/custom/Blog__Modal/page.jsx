@@ -209,7 +209,8 @@ function App() {
                     <SyntaxHighlighter
                       language="javascript"
                       style={solarizedlight}
-                      className="rounded-lg p-3 bg-black backdrop-blur-md mb-2"
+                      customStyle={{ background: "black" }}
+                      className="rounded-lg p-3 backdrop-blur-md mb-2 text-white"
                     >
                       {item.code}
                     </SyntaxHighlighter>
