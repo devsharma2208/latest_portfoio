@@ -31,12 +31,12 @@ const MainContent = () => {
             >
               <ReactTyped
                 strings={[
-                  `<span class='text-red-500'>Front-End Developer</span>`,
-                  `<span class='text-blue-500'>React JS Developer</span>`,
-                  `<span class='text-pink-500'>Next JS Developer</span>`,
+                  `<span class='text-yellow-500'>Front-End Developer</span>`,
+                  `<span class='text-yellow-500'>React JS Developer</span>`,
+                  `<span class='text-yellow-500'>Next JS Developer</span>`,
                   `<span class='text-yellow-500'>Full-Stack Developer</span>`,
-                  `<span class='text-green-500'>Web Designer</span>`,
-                  `<span class='text-purple-500'>Application Developer</span>`,
+                  `<span class='text-yellow-500'>Web Designer</span>`,
+                  `<span class='text-yellow-500'>Application Developer</span>`,
                 ]}
                 typeSpeed={100}
                 loop

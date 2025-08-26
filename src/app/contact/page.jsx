@@ -38,7 +38,8 @@ const containerVariant = {
 
 const Contact = () => {
   const form = useRef();
-  const [isSent, setIsSent] = useState(false);
+  const [status, setStatus] = useState("idle"); 
+  // idle | sending | sent
 
   const launchConfetti = () => {
     const duration = 3 * 1000;
@@ -67,30 +68,38 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setStatus("sending");
+
     emailjs
       .sendForm("service_lchhhli", "template_3x3hpn3", form.current, {
         publicKey: "bj00uJZXauMUVF1xD",
       })
       .then(
         () => {
-          setIsSent(true);
+          setStatus("sent");
           form.current.reset();
-          setTimeout(() => setIsSent(false), 4000);
           launchConfetti();
+          setTimeout(() => setStatus("idle"), 10000); // back to Send Message after 10s
         },
         (error) => {
           console.log("FAILED...", error.text);
+          setStatus("idle");
         }
       );
   };
 
   const button_name = {
-    title: isSent ? "Message Sent ✅" : "Send Message",
+    title:
+      status === "sending"
+        ? "Sending..."
+        : status === "sent"
+        ? "Message Sent ✅"
+        : "Send Message",
   };
 
   return (
     <div className="min-h-screen w-full overflow-x-hidden overflow-y-auto text-white relative bg-black">
-      {isSent && (
+      {status === "sent" && (
         <div className="fixed inset-0 z-[999] bg-black/70 flex justify-center items-center overflow-hidden">
           <div className="max-w-[90vw] max-h-[90vh] overflow-hidden">
             <Lottie
@@ -278,7 +287,7 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="items-start w-full"
           >
-            <Button title={button_name.title} />
+            <Button title={button_name.title} disabled={status === "sending"} />
           </motion.div>
         </motion.form>
       </div>
