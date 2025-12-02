@@ -7,7 +7,7 @@ import { IoIosSend } from "react-icons/io";
 import { useRouter } from "next/navigation"; // ✅ App Router version
 
 const Button = (props) => {
-  const router = useRouter(); // ✅ use from next/navigation
+  const router = useRouter(); // ✅ use from next/navigation 
 
   const handleClick = () => {
     if (props.title === "More about me") {
