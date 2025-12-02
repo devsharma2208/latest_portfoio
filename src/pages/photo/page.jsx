@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import dev from "../../assests/image/dev__Image.png";
-import dev__black__white from "../../assests/image/dev__Image-modified.png";
+import dev from "../../assests/image/logo_image_colored.png";
+import dev__black__white from "../../assests/image/logo_black_white.png";
 import Image from "next/image";
 import { ReactTyped } from "react-typed";
 import Tilt from "react-parallax-tilt";

@@ -330,7 +330,7 @@ const About = () => {
               </div>
             </div>
             <div className="mt-5">
-              <a href="/Dev-latest-cv.pdf" download onClick={launchConfetti}>
+              <a href="/Dev_Resume.pdf" download onClick={launchConfetti}>
                 <Button title="Download CV" />
               </a>
             </div>
