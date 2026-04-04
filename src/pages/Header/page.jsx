@@ -10,41 +10,31 @@ import {
 
 const Header = () => {
   return (
-    <div
-      className={`
-        z-30 p-5 
-        fixed lg:absolute 
-        top-0 left-0 
-        w-full lg:w-[9rem] 
-        h-auto lg:h-screen 
-        bg-green-600 lg:bg-transparent
-        flex lg:items-center 
-        justify-center lg:justify-start
-      `}
-    >
-      <div>
-        <div className="font-bold text-gray-500 flex flex-col lg:flex-col items-center lg:items-start">
-          <ul className="flex lg:flex-col gap-4 lg:space-y-6 cursor-pointer">
-            {[
-              { href: "/", icon: <FaHome />, label: "Home" },
-              { href: "/about", icon: <FaUser />, label: "About" },
-              { href: "/works", icon: <FaBriefcase />, label: "Portfolio" },
-              { href: "/contact", icon: <FaEnvelopeOpen />, label: "Contact" },
-              { href: "/blogs", icon: <FaComments />, label: "Blog" },
-            ].map(({ href, icon, label }) => (
-              <Link href={href} key={label} className="relative group">
-                <div className="text-lg font-bold border border-gray-900 rounded-full group-hover:border-yellow-400 group-hover:rounded-r-3xl p-3 bg-gray-900 text-white group-hover:bg-yellow-400 transition">
-                  <span className="block group-hover:rotate-[360deg] transition-transform duration-900">
-                    {icon}
-                  </span>
-                </div>
-                <span className="absolute left-8 top-1/2 transform -translate-y-1/2 border group-hover:border-yellow-400 whitespace-nowrap pr-5 py-[0.7rem] text-sm bg-yellow-400 text-white rounded-r-3xl opacity-0 group-hover:opacity-100 group-hover:block hidden group-hover:translate-x-2 transition">
-                  {label}
+    <div className="w-full max-w-2xl px-2">
+      <div className="w-full flex items-center justify-center bg-[#111111]/80 backdrop-blur-xl border border-white/10 rounded-full py-3 px-6 shadow-2xl">
+        <ul className="flex flex-row gap-6 sm:gap-10 items-center justify-center w-full">
+          {[
+            { href: "/", icon: <FaHome />, label: "Home" },
+            { href: "/about", icon: <FaUser />, label: "About" },
+            { href: "/works", icon: <FaBriefcase />, label: "Portfolio" },
+            { href: "/contact", icon: <FaEnvelopeOpen />, label: "Contact" },
+            { href: "/blogs", icon: <FaComments />, label: "Blog" },
+          ].map(({ href, icon, label }) => (
+            <Link href={href} key={label} className="relative group flex items-center justify-center">
+              <div className="text-xl sm:text-2xl text-zinc-400 group-hover:text-white transition-all duration-300 hover:scale-110">
+                <span className="block drop-shadow-md">
+                  {icon}
                 </span>
-              </Link>
-            ))}
-          </ul>
-        </div>
+              </div>
+              {/* Tooltip for horizontal navbar */}
+              <span className="absolute top-[150%] left-1/2 transform -translate-x-1/2 px-3 py-1.5 text-xs font-semibold bg-white text-black rounded-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300 shadow-xl pointer-events-none whitespace-nowrap">
+                {label}
+                {/* Arrow up */}
+                <div className="absolute bottom-[100%] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[6px] border-b-white"></div>
+              </span>
+            </Link>
+          ))}
+        </ul>
       </div>
     </div>
   );

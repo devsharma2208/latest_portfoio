@@ -2,6 +2,7 @@
 import Button from "@/custom/Button/page";
 import React from "react";
 import { ReactTyped } from "react-typed";
+import { motion } from "framer-motion";
 
 const MainContent = () => {
   const button_name = {
@@ -9,57 +10,79 @@ const MainContent = () => {
     route: "/about",
   };
   return (
-    <div className="order-3 md:order-2 pb-10 ">
-      <div className="flex flex-col sm:items-center sm:justify-center sm:mx-0 mx-5 mt-[8rem] sm:mt-[10rem] ">
-        <div className="font-bold md:block hidden">
-          <h1 className="text-blue-100 text-xl sm:text-5xl font-[poppins] z-20">
+    <div className="w-full relative z-10 flex flex-col justify-center h-full sm:mt-10 lg:mt-0">
+      <div className="flex flex-col md:items-start items-center md:text-left text-center">
+        
+        {/* Subtle Badge */}
+        <motion.div
+           initial={{ opacity: 0, y: 10 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.6, delay: 0.1 }}
+           className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-zinc-300 text-sm font-medium mb-6 inline-flex items-center gap-2 backdrop-blur-sm shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Available for new opportunities
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="font-bold w-full"
+        >
+          <h1 className="text-zinc-500 text-xl sm:text-2xl lg:text-3xl font-sans tracking-tight mb-2">
             Hi There,
           </h1>
-          <h1 className="text-green-600 text-xl sm:text-5xl font-[poppins] z-20 mt-3">
-            I'M DEV SHARMA
+          <h1 className="text-white text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-black font-sans tracking-tight leading-[1.1] mb-6 drop-shadow-md">
+            I'm Dev <br className="hidden lg:block"/> Sharma.
           </h1>
-          <div className="text-start">
-            {/* <h1 className="text-gray-500 text-2xl sm:text-5xl px-0 sm:pt-6 pt-2 sm:text-start text-end z-20">
-              WEB DESIGNER /{" "}
-            </h1>
-            <h1 className="sm:text-3xl text-xl px-0 pt-1 text-green-700 z-20">
-              APPLICATION DEVELOPER
-            </h1> */}
+          
+          <div className="text-start mt-2">
             <span
-              className="sm:text-3xl text-xl px-0 pt-1 z-20 font-semibold tracking-wide mt-3"
+              className="sm:text-2xl lg:text-3xl text-xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-500"
               style={{ display: "inline-block" }}
             >
               <ReactTyped
                 strings={[
-                  `<span class='text-yellow-500'>Front-End Developer</span>`,
-                  `<span class='text-yellow-500'>React JS Developer</span>`,
-                  `<span class='text-yellow-500'>Next JS Developer</span>`,
-                  `<span class='text-yellow-500'>Full-Stack Developer</span>`,
-                  `<span class='text-yellow-500'>Web Designer</span>`,
-                  `<span class='text-yellow-500'>Application Developer</span>`,
+                  `Front-End Developer`,
+                  `React JS Developer`,
+                  `Next JS Developer`,
+                  `Full-Stack Developer`,
+                  `Web Designer`,
+                  `Application Developer`,
                 ]}
-                typeSpeed={100}
+                typeSpeed={50}
                 loop
-                backSpeed={50}
+                backSpeed={30}
                 cursorChar="|"
                 showCursor={true}
                 smartBackspace={true}
-                contentType="html"
               />
             </span>
           </div>
-        </div>
-        <div className="text-gray-200 text-xl sm:p-6 sm:mt-0  font-[sans] text-justify z-20">
-          <p className="md:mt-0 mt-20">
-            I'm a DEV SHARMA based web designer & front‑end developer focused on
-            crafting clean & user‑friendly experiences, I am passionate about
-            building excellent software that improves the lives of those around
-            me.
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-zinc-400 text-lg lg:text-xl font-normal leading-relaxed max-w-xl z-20 mt-8 mb-10"
+        >
+          <p>
+            An India based web designer & developer focused on crafting clean, exceptionally user-friendly, and highly performant digital experiences. Passionate about building excellent software that fundamentally improves lives.
           </p>
-        </div>
-        <div className="items-start w-full sm:ml-12 sm:mt-0 mt-20">
-          <Button title={button_name.title} route={button_name?.route} />
-        </div>
+        </motion.div>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="w-full flex md:justify-start justify-center z-20"
+        >
+          <div className="hover:scale-105 transition-transform duration-300">
+            <Button title={button_name.title} route={button_name?.route} />
+          </div>
+        </motion.div>
       </div>
     </div>
   );
