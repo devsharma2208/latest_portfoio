@@ -12,41 +12,13 @@ const Photo = () => {
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center pt-8 md:pt-0 z-10">
       
-      {/* Mobile Title Layout (Hidden on Desktop) */}
-      <div className="font-bold md:hidden flex flex-col items-center text-center w-full mb-10">
-        <h1 className="text-zinc-500 text-xl font-sans tracking-tight mb-2">
-          Hi There,
-        </h1>
-        <h1 className="text-white text-4xl font-black font-sans leading-tight">
-          I'm Dev Sharma.
-        </h1>
-        <div className="mt-2">
-          <span className="text-xl font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-500">
-            <ReactTyped
-              strings={[
-                `Front-End Developer`,
-                `React JS Developer`,
-                `Next JS Developer`,
-                `Full-Stack Developer`,
-                `Web Designer`,
-                `Application Developer`,
-              ]}
-              typeSpeed={50}
-              loop
-              backSpeed={30}
-              cursorChar="|"
-              showCursor={true}
-              smartBackspace={true}
-            />
-          </span>
-        </div>
-      </div>
+
 
       <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.3, type: "spring", stiffness: 100 }}
-        className="group [perspective:1200px] w-full max-w-[18rem] md:max-w-[22rem] lg:max-w-[24rem] aspect-[4/5] z-30"
+        initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ duration: 1.5, delay: 0.3, type: "spring", stiffness: 100 }}
+        className="group [perspective:1200px] w-full aspect-[4/5] z-30"
       >
         <Tilt
           glareEnable={true}
