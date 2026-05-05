@@ -1,3 +1,5 @@
+"use client"; // Important for Next.js App Router
+
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -5,7 +7,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const Blog__Modal = ({ setIsOpen }) => {
-  const [activeTab, setActiveTab] = useState("overview");
+  // Removed activeTab as it was unused and caused linting errors
 
   const closeModal = (e) => {
     if (e.target.id === "modalOverlay") setIsOpen(false);
@@ -16,6 +18,7 @@ const Blog__Modal = ({ setIsOpen }) => {
     visible: { opacity: 1 },
     exit: { opacity: 0 },
   };
+
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -29,15 +32,27 @@ const Blog__Modal = ({ setIsOpen }) => {
     },
     exit: { opacity: 0, scale: 0.8, transition: { duration: 0.2 } },
   };
+
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
 
+  // Merged styles safely to avoid SyntaxHighlighter errors
+  const codeStyle = {
+    ...solarizedlight,
+    backgroundColor: "#000000", // Force black background
+    padding: "1rem",
+    userSelect: "none", // Prevent copy
+    WebkitUserSelect: "none",
+    MozUserSelect: "none",
+    borderRadius: "0.5rem",
+  };
+
   const detailedContent = [
     {
       heading: "Introduction to React.js",
-      text: "React.js is a cutting-edge JavaScript library developed by Facebook for building dynamic, interactive, and highly responsive user interfaces. Unlike traditional web development approaches where the entire page reloads for updates, React allows developers to update only the parts of the UI that need changes, improving performance and user experience. Its component-based architecture encourages modular design, making applications easier to scale, maintain, and test. React has also become a foundation for many modern frameworks, including Next.js and React Native.",
+      text: "React.js is a cutting-edge JavaScript library developed by Facebook for building dynamic, interactive, and highly responsive user interfaces. Unlike traditional web development approaches where entire page reloads for updates, React allows developers to update only parts of UI that need changes, improving performance and user experience. Its component-based architecture encourages modular design, making applications easier to scale, maintain, and test. React has also become a foundation for many modern frameworks, including Next.js and React Native.",
       code: `// Simple React component
 function HelloWorld() {
   return <h1>Hello, React!</h1>;
@@ -46,7 +61,7 @@ export default HelloWorld;`,
     },
     {
       heading: "Component-Based Architecture",
-      text: "Components are the core building blocks of React. Each component is self-contained, meaning it can manage its own structure, styling, and logic independently. Components can be functional or class-based, and can be nested within each other to create complex UIs. This modularity enhances code reusability and makes collaboration easier in larger projects, as teams can work on separate components simultaneously.",
+      text: "Components are core building blocks of React. Each component is self-contained, meaning it can manage its own structure, styling, and logic independently. Components can be functional or class-based, and can be nested within each other to create complex UIs. This modularity enhances code reusability and makes collaboration easier in larger projects, as teams can work on separate components simultaneously.",
       code: `// Functional Component
 function Card({ title, content }) {
   return (
@@ -127,8 +142,7 @@ function App() {
     },
   ];
 
-  const demoCode = `function HelloWorld() { return <h1>Hello, React!</h1>; } export default HelloWorld;`;
-
+  // Ensure images exist at this path, or error will occur
   const images = [
     require("../../Images/React__Beginners.jpg"),
     require("../../Images/react_begineers.png"),
@@ -137,65 +151,66 @@ function App() {
 
   return (
     <AnimatePresence>
-      <motion.div
-        id="modalOverlay"
-        onClick={closeModal}
-        className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 overflow-y-auto"
-        variants={overlayVariants}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
+      {setIsOpen && ( // Ensure condition is safe
         <motion.div
-          className="relative bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-2xl max-w-6xl w-full flex flex-col md:flex-row max-h-[85vh] md:max-h-[90vh] overflow-hidden md:mx-0 mx-5"
-          variants={modalVariants}
+          id="modalOverlay"
+          onClick={closeModal}
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 overflow-y-auto"
+          variants={overlayVariants}
           initial="hidden"
           animate="visible"
           exit="exit"
         >
-          <motion.button
-            onClick={() => setIsOpen(false)}
-            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/30 backdrop-blur-md rounded-full hover:bg-white/50 transition shadow-lg cursor-pointer z-50"
-          >
-            ✕
-          </motion.button>
-
           <motion.div
-            className="relative w-full md:w-1/3 h-64 md:h-auto flex-shrink-0"
-            variants={itemVariants}
+            className="relative bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-2xl max-w-6xl w-full flex flex-col md:flex-row max-h-[85vh] md:max-h-[90vh] overflow-hidden md:mx-0 mx-5 select-none"
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            <Image
-              src={images[0]}
-              alt="React JS Beginner Guide"
-              fill
-              quality={100}
-              priority
-              className="object-cover "
-            />
-          </motion.div>
+            <motion.button
+              onClick={() => setIsOpen(false)}
+              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/30 backdrop-blur-md rounded-full hover:bg-white/50 transition shadow-lg cursor-pointer z-50 select-none"
+            >
+              ✕
+            </motion.button>
 
-          <motion.div
-            className="md:p-6 p-3 md:w-2/3 flex flex-col overflow-y-auto max-h-[90vh] scrollbar-none"
-            variants={itemVariants}
-          >
-            <>
+            <motion.div
+              className="relative w-full md:w-1/3 h-64 md:h-auto flex-shrink-0"
+              variants={itemVariants}
+            >
+              <Image
+                src={images[0]}
+                alt="React JS Beginner Guide"
+                fill
+                quality={100}
+                priority
+                className="object-cover select-none"
+              />
+            </motion.div>
+
+            <motion.div
+              className="md:p-6 p-3 md:w-2/3 flex flex-col overflow-y-auto max-h-[90vh] scrollbar-none"
+              variants={itemVariants}
+            >
               <motion.h2
-                className="text-2xl font-bold mb-4 text-white font-heading"
+                className="text-2xl font-bold mb-4 text-white font-heading select-none"
                 variants={itemVariants}
               >
                 Introduction to React.js: A Beginner’s Guide
               </motion.h2>
+              
               {detailedContent.map((item, i) => (
-                <motion.div key={i} className="mb-6" variants={itemVariants}>
-                  <h3 className="text-xl font-semibold mb-2 text-white font-heading">
+                <motion.div key={item.heading} className="mb-6" variants={itemVariants}>
+                  <h3 className="text-xl font-semibold mb-2 text-white font-heading select-none">
                     {i + 1}. {item.heading}
                   </h3>
-                  <p className="text-gray-200 text-justify font-sans mb-2">
+                  <p className="text-gray-200 text-justify font-sans mb-2 select-none">
                     {item.text}
                   </p>
 
                   {item?.extraImage && (
-                    <div className="relative w-full h-36 mb-2 rounded-lg overflow-hidden">
+                    <div className="relative w-full h-36 mb-2 rounded-lg overflow-hidden select-none">
                       <Image
                         src={item.extraImage}
                         alt={`Extra ${i}`}
@@ -208,8 +223,7 @@ function App() {
                   {item.code && (
                     <SyntaxHighlighter
                       language="javascript"
-                      style={solarizedlight}
-                      customStyle={{ background: "black" }}
+                      style={codeStyle} // Using merged style object
                       className="rounded-lg p-3 backdrop-blur-md mb-2 text-white"
                     >
                       {item.code}
@@ -217,19 +231,20 @@ function App() {
                   )}
                 </motion.div>
               ))}
-            </>
-            <motion.p
-              className="text-gray-400 mb-4 italic font-sans text-justify"
-              variants={itemVariants}
-            >
-              Tip: Practice by creating small projects such as a to-do app, a
-              counter, or a simple blog. This hands-on experience will help you
-              understand React’s component-based architecture, props, state, and
-              lifecycle methods.{" "}
-            </motion.p>
+              
+              <motion.p
+                className="text-gray-400 mb-4 italic font-sans text-justify select-none"
+                variants={itemVariants}
+              >
+                Tip: Practice by creating small projects such as a to-do app, a
+                counter, or a simple blog. This hands-on experience will help you
+                understand React’s component-based architecture, props, state, and
+                lifecycle methods.
+              </motion.p>
+            </motion.div>
           </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </AnimatePresence>
   );
 };

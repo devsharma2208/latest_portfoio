@@ -3,12 +3,17 @@ import React from "react";
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
 
-const MainContent = () => {
+// ⬇️ FIX: Image Import Path
+// Kyunki aapki file 'src/pages/MainContent/page.jsx' hai,
+// aur image 'src/Images/devProfile.jpg' mein hai, toh humein 3 level upar jaana hoga (../../../).
+import devImg from "../../assests/image/logo_image_colored.png";
 
+const MainContent = () => {
   return (
     <div className="w-full relative z-10 flex flex-col justify-center h-full">
       <div className="flex flex-col md:items-start items-center md:text-left text-center">
         <div className="flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto z-20">
+          {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -19,10 +24,29 @@ const MainContent = () => {
             Accepting New Projects
           </motion.div>
 
+          {/* Added Profile Image Section */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="mb-8 relative group"
+          >
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+
+            {/* Image */}
+            <img
+              src={devImg.src} // Next.js imported image ka path
+              alt="Dev Sharma Profile"
+              className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-2 border-white/10 shadow-2xl"
+            />
+          </motion.div>
+
+          {/* Main Heading */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="w-full"
           >
             <h1 className="text-5xl sm:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[1.05] text-white overflow-hidden pb-2 mb-4">
@@ -33,6 +57,7 @@ const MainContent = () => {
             </h1>
           </motion.div>
 
+          {/* Description Paragraph */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,6 +71,7 @@ const MainContent = () => {
             </p>
           </motion.div>
 
+          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,4 +97,5 @@ const MainContent = () => {
     </div>
   );
 };
+
 export default MainContent;
