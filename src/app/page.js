@@ -1,6 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Header from "@/pages/Header/page";
 import MainContent from "@/pages/MainContent/page";
 import Image from "@/pages/photo/page";
@@ -80,7 +85,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="min-h-screen w-full bg-[#0d0d0d] text-zinc-100 font-sans selection:bg-teal-500 selection:text-white relative overflow-x-hidden flex flex-col"
+          className="w-full bg-[#0d0d0d] text-zinc-100 font-sans selection:bg-teal-500 selection:text-white relative"
         >
           {/* Subtle Dot Grid Background */}
           <div
@@ -97,17 +102,17 @@ export default function Home() {
           </div>
 
           {/* Dynamic Scrolling Avatar */}
-          <motion.div 
+          {/* <motion.div 
             style={{ top: avatarTop, left: avatarLeft, scale: avatarScale }}
             className="fixed z-[100] origin-top-left hidden md:block w-[300px] pointer-events-none"
           >
             <Image />
-          </motion.div>
+          </motion.div> */}
 
           {/* Trendy Vertical Scrolling Layout */}
           <div className="w-full flex flex-col items-center justify-start relative z-10 pt-[100px] lg:pt-[150px] overflow-visible">
             {/* HERO SECTION */}
-            <div className="w-full max-w-[1200px] mx-auto px-4 flex flex-col items-center justify-center min-h-[70vh] relative mb-32">
+            <div className="w-full mx-auto px-4 flex flex-col items-center justify-center relative mb-32">
               {/* Ambient Glows */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] h-full bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
 

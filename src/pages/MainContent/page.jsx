@@ -1,23 +1,31 @@
 "use client";
 import React from "react";
 import { ReactTyped } from "react-typed";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 // Image import path as per your requirement
 import devImg from "../../assests/image/logo_image_colored.png";
 
 const MainContent = () => {
+  const { scrollY } = useScroll();
+  const progress = useTransform(scrollY, [0, 400], [0, 1]);
+  const scale = useTransform(progress, [0, 1], [1, 0.35]);
+  const x = useTransform(
+    progress,
+    (val) => `calc(${val} * (-50vw + 17.5% + 24px))`,
+  );
+  const y = useTransform(progress, (val) => `${val * -32.5}%`);
+
   return (
     <div className="w-full relative z-10 flex flex-col justify-center h-full min-h-screen">
       <div className="flex flex-col md:items-start items-center md:text-left text-center">
         <div className="flex flex-col items-center justify-center text-center w-full max-w-6xl mx-auto z-20">
-          
           {/* Status Badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-zinc-300 text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase mb-12 inline-flex items-center gap-2 shadow-xl"
+            className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-zinc-300 text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase mb-12 inline-flex items-center gap-2 shadow-xl mt-12 sm:mt-0"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60"></span>
@@ -26,48 +34,55 @@ const MainContent = () => {
             Accepting New Projects
           </motion.div>
 
-          {/* Profile Image Section (Stitch Style) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="mb-12 relative group"
-          >
-            {/* Massive Backglow */}
-            <div className="absolute -inset-10 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full blur-[80px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000"></div>
-
-            <div className="relative p-2 rounded-[2.5rem] bg-gradient-to-br from-white/10 via-white/[0.02] to-transparent border border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden backdrop-blur-2xl">
-              <img
-                src={devImg.src} 
-                alt="Dev Sharma Profile"
-                className="relative w-32 h-32 sm:w-52 sm:h-52 rounded-[2rem] object-cover transition-all duration-1000 group-hover:scale-105"
-              />
-              {/* Overlay Gradient on Image */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
-              <div className="absolute bottom-5 left-0 right-0 text-[8px] font-black text-white tracking-[0.4em] uppercase opacity-40">
-                AI ENGINEER
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Main Heading with ReactTyped */}
+          {/* Main Heading with ReactTyped and Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="w-full mb-10"
+            className="w-full mb-10 flex flex-col items-center"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-[5rem] font-bold tracking-tighter leading-[0.95] text-white px-3">
-              Building intelligent <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
+            <div className="text-4xl sm:text-5xl lg:text-[5rem] font-bold tracking-wide text-white px-3 flex flex-col items-center justify-center w-full">
+              {/* Profile Image Section (Stitch Style) with Sticky & Scroll Animation */}
+              <div className="sticky top-4 sm:top-6 z-[100] w-full flex justify-center mb-6 sm:mb-8 pointer-events-none">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                  style={{ scale, x, y }}
+                  className="relative group flex justify-center pointer-events-auto"
+                >
+                  {/* Massive Backglow */}
+                  <div className="absolute -inset-6 sm:-inset-10 bg-linear-to-r from-blue-400 to-purple-600 rounded-full blur-[80px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000"></div>
+
+                  <div className="relative p-2 rounded-[2.5rem] bg-linear-to-br from-white/10 via-white/2 to-transparent border border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden backdrop-blur-2xl inline-flex items-center justify-center">
+                    <img
+                      src={devImg.src}
+                      alt="Dev Sharma Profile"
+                      className="relative w-32 h-32 sm:w-52 sm:h-52 rounded-4xl object-cover transition-all duration-1000 group-hover:scale-105 block"
+                    />
+                    {/* Overlay Gradient on Image */}
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent pointer-events-none rounded-[2.5rem]" />
+                    <div className="absolute bottom-5 left-0 right-0 text-[8px] font-black text-white tracking-[0.4em] uppercase opacity-40 text-center w-full flex justify-center">
+                      AI ENGINEER
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+              <p className="mb-6 sm:mb-8"> Building intelligent </p>
+
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 text-center block w-full mt-2">
                 <ReactTyped
-                  strings={["digital products.", "AI experiences.", "fast systems."]}
+                  strings={[
+                    "digital products.",
+                    "AI experiences.",
+                    "fast systems.",
+                  ]}
                   typeSpeed={70}
                   backSpeed={50}
                   loop
                 />
               </span>
-            </h1>
+            </div>
           </motion.div>
 
           {/* Description Paragraph */}
@@ -78,7 +93,8 @@ const MainContent = () => {
             className="max-w-3xl mb-12"
           >
             <p className="text-zinc-500 text-lg sm:text-2xl font-light leading-relaxed tracking-tight">
-              I'm <span className="text-white font-bold italic">Dev Sharma</span>. A
+              I'm{" "}
+              <span className="text-white font-bold italic">Dev Sharma</span>. A
               Full-Stack & AI Engineer focused on creating exceptionally fast,
               accessible, and remarkably beautiful web experiences.
             </p>

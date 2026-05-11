@@ -11,13 +11,15 @@ import { ReactTyped } from "react-typed";
 const Photo = () => {
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center pt-8 md:pt-0 z-10">
-      
-
-
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
-        transition={{ duration: 1.5, delay: 0.3, type: "spring", stiffness: 100 }}
+        transition={{
+          duration: 1.5,
+          delay: 0.3,
+          type: "spring",
+          stiffness: 100,
+        }}
         className="group [perspective:1200px] w-full aspect-[4/5] z-30"
       >
         <Tilt
@@ -35,7 +37,6 @@ const Photo = () => {
           <div className="absolute inset-0 bg-white/5 blur-2xl rounded-full scale-105 group-hover:bg-white/10 transition-colors duration-700 pointer-events-none"></div>
 
           <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.05)] border border-white/10 bg-[#0a0a0a]/80 backdrop-blur-3xl group-hover:border-white/20 transition-all duration-500 box-content">
-            
             <Image
               src={dev__black__white}
               alt="Dev B&W"
