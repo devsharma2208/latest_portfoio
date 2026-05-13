@@ -481,6 +481,7 @@ export default function Works() {
         </section>
 
         {/* CTA */}
+<<<<<<< Updated upstream
         <section className="text-center py-40 px-6 relative overflow-hidden">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[300px] bg-[radial-gradient(ellipse,rgba(124,58,237,0.05)_0%,transparent_70%)] z-0" />
 
@@ -498,6 +499,21 @@ export default function Works() {
           >
             Work Together
             <FaArrowRight className="ml-3" />
+=======
+        <section style={{ textAlign: "center", padding: "160px 25px", position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "80%", height: "300px", background: "radial-gradient(ellipse, rgba(124,58,237,0.05) 0%, transparent 70%)", zIndex: 0 }} />
+          <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "4.5rem", position: "relative", zIndex: 1 }}>Let's Build Something Great</h2>
+          <p style={{ color: "#64748b", marginBottom: "40px", fontSize: "18px" }}>Have a visionary project? Let's talk.</p>
+          <Link href="/contact" style={{ 
+            display: "inline-flex", position: "relative", zIndex: 1, background: "#fff", color: "#000", 
+            padding: "16px 45px", borderRadius: "50px", fontWeight: "bold", textDecoration: "none",
+            transition: "transform 0.3s", 
+          }} 
+          onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
+          onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+          >
+            Work Together <FaArrowRight style={{ margin: 4 }} />
+>>>>>>> Stashed changes
           </Link>
         </section>
 
