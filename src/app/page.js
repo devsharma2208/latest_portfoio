@@ -10,7 +10,7 @@ import Header from "@/pages/Header/page";
 import MainContent from "@/pages/MainContent/page";
 import Image from "@/pages/photo/page";
 import Footer from "@/custom/Footer/page";
-import { CursorGlow } from "@/custom/mouseGlow/page";
+import { CustomCursor } from "@/custom/mouseGlow/page";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -45,7 +45,14 @@ export default function Home() {
 
   return (
     <AnimatePresence mode="wait">
-      <CursorGlow/>
+      <CustomCursor />
+      <style jsx global>{`
+        * { cursor: none !important; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0d0d0d; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+      `}</style>
       {showLanding ? (
         <motion.div
           key="landing"

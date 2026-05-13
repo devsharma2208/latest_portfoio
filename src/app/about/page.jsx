@@ -29,17 +29,16 @@ import {
   SiExpress,
   SiMongodb,
 } from "react-icons/si";
-import { CursorGlow } from "@/custom/mouseGlow/page";
+import { CursorGlow, CustomCursor } from "@/custom/mouseGlow/page";
 
 
 /* ================= NOISE ================= */
 function Noise() {
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-40 opacity-[0.025]"
+      className="fixed inset-0 pointer-events-none z-40 opacity-40"
       style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-        backgroundSize: "256px 256px",
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")`,
       }}
     />
   );
@@ -204,9 +203,9 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="bg-[#030303] pt-20 text-white min-h-screen overflow-x-hidden select-none">
+    <div className="bg-[#07070f] pt-20 text-white min-h-screen overflow-x-hidden select-none">
       <Noise />
-      <CursorGlow />
+      <CustomCursor />
       <Header />
 
       {/* Reduced gap from pt-40 to pt-24 to bring content closer to Header */}
@@ -507,8 +506,41 @@ export default function AboutPage() {
       </main>
       <Footer />
 
-      {/* ===== KEYFRAMES ===== */}
-      <style jsx>{`
+      {/* ===== KEYFRAMES + GLOBAL STYLES ===== */}
+      <style jsx global>{`
+        @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+        * {
+          user-select: none !important;
+          -webkit-user-select: none !important;
+          cursor: none !important;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          background: #07070f;
+          overflow-x: hidden;
+          margin: 0;
+          font-family: "DM Sans", sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+          width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+          background: #07070f;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: #222;
+          border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+          background: #7c3aed;
+        }
+
         @keyframes float {
           0%,
           100% {

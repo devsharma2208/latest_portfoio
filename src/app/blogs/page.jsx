@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight, FaClock, FaCalendarAlt, FaTag } from "react-icons/fa";
 import Blog__Modal from "@/custom/Blog__Modal/page";
 import Footer from "@/custom/Footer/page";
+import { CustomCursor } from "@/custom/mouseGlow/page";
 
 // ✅ 用 import 代替 require
 import reactImg from "../../Images/react_begineers.png";
@@ -169,7 +170,17 @@ const Blogs = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden text-white relative bg-[#07070f]">
+    <div className="min-h-screen w-full overflow-x-hidden text-white relative bg-[#07070f]" style={{ cursor: 'none' }}>
+      <style jsx global>{`
+        * { cursor: none !important; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #07070f; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+      `}</style>
+
+      <CustomCursor />
+
       <AnimatePresence>
         {open && <Blog__Modal setIsOpen={setOpen} />}
       </AnimatePresence>

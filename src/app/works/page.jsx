@@ -306,49 +306,80 @@ export default function Works() {
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-   const featured = [
-    { 
-        title: "HeadGen AI", 
-        tech: "MERN Stack · Tailwind", 
-        img: require("../../Images/headGen.jpeg"), 
-        description: "AI-powered headshot generation platform that creates professional portraits with customizable features — delivered in seconds.", 
-        features: ["AI Headshots", "Stripe API", "Next.js", "Instant Delivery"], 
-        live: "https://headgen.ai/", 
-        code: "https://headgen.ai/" 
+  const featured = [
+    {
+      title: "HeadGen AI",
+      tech: "MERN Stack · Tailwind",
+      img: require("../../Images/headGen.jpeg"),
+      description:
+        "AI-powered headshot generation platform that creates professional portraits with customizable features — delivered in seconds.",
+      features: ["AI Headshots", "Stripe API", "Next.js", "Instant Delivery"],
+      live: "https://headgen.ai/",
+      code: "https://headgen.ai/",
     },
-    { 
-        title: "Casham", 
-        tech: "React Native", 
-        img: require("../../Images/casham.jpg"), 
-        description: "Mobile payment app enabling instant P2P transfers, QR-code scanning, and seamless wallet management for everyday transactions.", 
-        features: ["QR Pay", "Wallet System", "Security", "P2P Transfer"], 
-        live: "https://play.google.com/store/apps/details?id=com.casham&hl=en", 
-        code: "https://play.google.com/store/apps/details?id=com.casham&hl=en" 
+    {
+      title: "Casham",
+      tech: "React Native",
+      img: require("../../Images/casham.jpg"),
+      description:
+        "Mobile payment app enabling instant P2P transfers, QR-code scanning, and seamless wallet management for everyday transactions.",
+      features: ["QR Pay", "Wallet System", "Security", "P2P Transfer"],
+      live: "https://play.google.com/store/apps/details?id=com.casham&hl=en",
+      code: "https://play.google.com/store/apps/details?id=com.casham&hl=en",
     },
-    { 
-        title: "3B Profiles", 
-        tech: "React Native + MERN", 
-        img: require("../../Images/3bProfiles.jpg"), 
-        description: "B2B distributor networking platform with order management, inventory tracking, and a streamlined supply-chain workflow.", 
-        features: ["Inventory Mgmt", "B2B Connect", "Order Flow"], 
-        live: "https://play.google.com/store/apps/details?id=com.pearl.bprofiles&pli=1", 
-        code: "https://play.google.com/store/apps/details?id=com.pearl.bprofiles&pli=1" 
+    {
+      title: "3B Profiles",
+      tech: "React Native + MERN",
+      img: require("../../Images/3bProfiles.jpg"),
+      description:
+        "B2B distributor networking platform with order management, inventory tracking, and a streamlined supply-chain workflow.",
+      features: ["Inventory Mgmt", "B2B Connect", "Order Flow"],
+      live: "https://play.google.com/store/apps/details?id=com.pearl.bprofiles&pli=1",
+      code: "https://play.google.com/store/apps/details?id=com.pearl.bprofiles&pli=1",
     },
   ];
 
   const archive = [
-    { 
-        title: "Amazon Clone", 
-        tech: "React JS, Redux", 
-        img: require("../../Images/Amazon.png"), 
-        features: ["Product Catalog", "Shopping Cart", "User Auth"], 
-        live: "https://amazon-clon-tau.vercel.app/", 
-        code: "https://github.com/devsharma2208/Amazon-Clon" 
+    {
+      title: "Amazon Clone",
+      tech: "React JS, Redux",
+      img: require("../../Images/Amazon.png"),
+      features: ["Product Catalog", "Shopping Cart", "User Auth"],
+      live: "https://amazon-clon-tau.vercel.app/",
+      code: "https://github.com/devsharma2208/Amazon-Clon",
     },
-    { title: "Goibibo Clone", tech: "React JS", img: require("../../Images/Goibibo.png"), features: ["Flight Booking", "UI/UX"], live: "https://goibibo-clone-react-project-1-sobnc222vpo4.vercel.app/", code: "https://github.com/devsharma2208/Goibibo-Clone---React-Project-1---sobnc222vpo4" },
-    { title: "Reddit Clone", tech: "React JS", img: require("../../Images/Reddit.png"), features: ["Subreddits", "Voting"], live: "https://reddit-react-clone-react-project-2-m2j8eo3lwprp.vercel.app/", code: "https://github.com/devsharma2208/Reddit-React-Clone---React-Project-2---m2j8eo3lwprp" },
-    { title: "Star Portal", tech: "Next.js", img: require("../../Images/IntractiveWeb.png"), features: ["Animations", "GSAP"], live: "https://star-portal-wheat.vercel.app/", code: "https://github.com/devsharma2208/star_portal" },
-    { title: "E-commerce Backend", tech: "Node.js · MongoDB", img: require("../../Images/backend1.jpg"), features: ["RESTful API", "JWT", "Express"], live: "https://github.com/devsharma2208/Full-Stack/tree/master/Backend", code: "https://github.com/devsharma2208/Full-Stack/tree/master/Backend" },
+    {
+      title: "Goibibo Clone",
+      tech: "React JS",
+      img: require("../../Images/Goibibo.png"),
+      features: ["Flight Booking", "UI/UX"],
+      live: "https://goibibo-clone-react-project-1-sobnc222vpo4.vercel.app/",
+      code: "https://github.com/devsharma2208/Goibibo-Clone---React-Project-1---sobnc222vpo4",
+    },
+    {
+      title: "Reddit Clone",
+      tech: "React JS",
+      img: require("../../Images/Reddit.png"),
+      features: ["Subreddits", "Voting"],
+      live: "https://reddit-react-clone-react-project-2-m2j8eo3lwprp.vercel.app/",
+      code: "https://github.com/devsharma2208/Reddit-React-Clone---React-Project-2---m2j8eo3lwprp",
+    },
+    {
+      title: "Star Portal",
+      tech: "Next.js",
+      img: require("../../Images/IntractiveWeb.png"),
+      features: ["Animations", "GSAP"],
+      live: "https://star-portal-wheat.vercel.app/",
+      code: "https://github.com/devsharma2208/star_portal",
+    },
+    {
+      title: "E-commerce Backend",
+      tech: "Node.js · MongoDB",
+      img: require("../../Images/backend1.jpg"),
+      features: ["RESTful API", "JWT", "Express"],
+      live: "https://github.com/devsharma2208/Full-Stack/tree/master/Backend",
+      code: "https://github.com/devsharma2208/Full-Stack/tree/master/Backend",
+    },
   ];
 
   return (
@@ -481,7 +512,6 @@ export default function Works() {
         </section>
 
         {/* CTA */}
-<<<<<<< Updated upstream
         <section className="text-center py-40 px-6 relative overflow-hidden">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[300px] bg-[radial-gradient(ellipse,rgba(124,58,237,0.05)_0%,transparent_70%)] z-0" />
 
@@ -499,21 +529,6 @@ export default function Works() {
           >
             Work Together
             <FaArrowRight className="ml-3" />
-=======
-        <section style={{ textAlign: "center", padding: "160px 25px", position: "relative", overflow: "hidden" }}>
-            <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: "80%", height: "300px", background: "radial-gradient(ellipse, rgba(124,58,237,0.05) 0%, transparent 70%)", zIndex: 0 }} />
-          <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "4.5rem", position: "relative", zIndex: 1 }}>Let's Build Something Great</h2>
-          <p style={{ color: "#64748b", marginBottom: "40px", fontSize: "18px" }}>Have a visionary project? Let's talk.</p>
-          <Link href="/contact" style={{ 
-            display: "inline-flex", position: "relative", zIndex: 1, background: "#fff", color: "#000", 
-            padding: "16px 45px", borderRadius: "50px", fontWeight: "bold", textDecoration: "none",
-            transition: "transform 0.3s", 
-          }} 
-          onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
-          onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
-          >
-            Work Together <FaArrowRight style={{ margin: 4 }} />
->>>>>>> Stashed changes
           </Link>
         </section>
 

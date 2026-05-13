@@ -11,7 +11,7 @@ import successAnimation from "../../assests/animations/success.json";
 import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
 import Footer from "@/custom/Footer/page";
-import { CursorGlow } from "@/custom/mouseGlow/page";
+import { CustomCursor } from "@/custom/mouseGlow/page";
 
 /* ─────────────── Custom Cursor Animation ─────────────── */
 
@@ -90,8 +90,16 @@ const Contact = () => {
   return (
     // Added select-none to prevent text copying
     <div className="min-h-screen w-full pt-20 overflow-x-hidden text-white relative bg-[#07070f] select-none">
+      <style jsx global>{`
+        * { cursor: none !important; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #07070f; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+      `}</style>
+
       {/* Custom Cursor */}
-      <CursorGlow />
+      <CustomCursor />
 
       {/* ═══════ Success Overlay ═══════ */}
       {status === "sent" && (
