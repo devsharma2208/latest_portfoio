@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Header from "@/pages/Header/page";
+import Footer from "@/custom/Footer/page";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -520,18 +521,8 @@ export default function AboutPage() {
           </motion.div>
         </div>
 
-        {/* ===== BOTTOM DECORATIVE ===== */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="mt-20 text-center"
-        >
-          <div className="h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
-          <p className="mt-6 text-[10px] uppercase tracking-[0.3em] text-zinc-700">
-            Designed & Built by Dev Sharma
-          </p>
-        </motion.div>
+        {/* ===== FOOTER ===== */}
+        <Footer />
       </main>
 
       {/* ===== KEYFRAMES ===== */}

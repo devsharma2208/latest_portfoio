@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform, AnimatePresence, useSpring } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
 import Header from "@/pages/Header/page";
+import Footer from "@/custom/Footer/page";
 
 /* ── 1. ADVANCED CUSTOM CURSOR WITH PHYSICS ── */
 const CustomCursor = () => {
@@ -347,9 +348,7 @@ export default function Works() {
           </Link>
         </section>
 
-        <footer style={{ padding: "50px 25px", textAlign: "center", color: "#334155", fontSize: 13, borderTop: "1px solid rgba(255,255,255,0.05)", letterSpacing: "1px" }}>
-          © {new Date().getFullYear()} DEV SHARMA. ENGINEERED WITH PASSION ✦
-        </footer>
+        <Footer />
       </div>
     </>
   );

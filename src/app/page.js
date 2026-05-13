@@ -9,7 +9,7 @@ import {
 import Header from "@/pages/Header/page";
 import MainContent from "@/pages/MainContent/page";
 import Image from "@/pages/photo/page";
-import { FaEnvelope, FaGithub, FaLinkedin, FaUserTie } from "react-icons/fa";
+import Footer from "@/custom/Footer/page";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -209,45 +209,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Social Links Footer */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="w-full flex items-center justify-center gap-8 py-12 mt-12 bg-[#0a0a0a] border-t border-white/5 z-50"
-            >
-              <a
-                href="https://www.linkedin.com/in/dev-sharma-007301173/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-500 hover:text-white hover:scale-110 transition-all duration-300"
-              >
-                <FaLinkedin size={24} />
-              </a>
-              <a
-                href="https://github.com/devsharma2208"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-500 hover:text-white hover:scale-110 transition-all duration-300"
-              >
-                <FaGithub size={24} />
-              </a>
-              <a
-                href="https://topmate.io/dev_sharma28"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-500 hover:text-white hover:scale-110 transition-all duration-300"
-              >
-                <FaUserTie size={22} />
-              </a>
-              <a
-                href="mailto:devsharmaelc@gmail.com"
-                className="text-zinc-500 hover:text-white hover:scale-110 transition-all duration-300"
-              >
-                <FaEnvelope size={22} />
-              </a>
-            </motion.div>
+            {/* Footer Component */}
+            <Footer />
           </div>
         </motion.div>
       )}

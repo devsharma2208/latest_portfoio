@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight, FaClock, FaCalendarAlt, FaTag } from "react-icons/fa";
 import Blog__Modal from "@/custom/Blog__Modal/page";
+import Footer from "@/custom/Footer/page";
 
 // ✅ 用 import 代替 require
 import reactImg from "../../Images/react_begineers.png";
@@ -255,19 +256,7 @@ const Blogs = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/[0.06] py-10 px-6 lg:px-16">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xl font-black tracking-wider text-white/80">
-            DEV{" "}
-            <span className="bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
-              SHARMA
-            </span>
-          </p>
-          <p className="text-xs text-slate-600">
-            © {new Date().getFullYear()} Dev Sharma. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

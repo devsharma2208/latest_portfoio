@@ -10,6 +10,7 @@ import Lottie from "lottie-react";
 import successAnimation from "../../assests/animations/success.json";
 import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
+import Footer from "@/custom/Footer/page";
 
 /* ─────────────── Custom Cursor Animation ─────────────── */
 const CursorGlow = () => {
@@ -422,19 +423,7 @@ const Contact = () => {
       </section>
 
       {/* ═══════ FOOTER ═══════ */}
-      <footer className="border-t border-white/[0.06] py-10 px-6 lg:px-16">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xl font-black tracking-wider text-white/80">
-            DEV{" "}
-            <span className="bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
-              SHARMA
-            </span>
-          </p>
-          <p className="text-xs text-slate-600">
-            © {new Date().getFullYear()} Dev Sharma. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
