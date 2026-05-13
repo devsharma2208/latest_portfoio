@@ -180,12 +180,12 @@ const Blogs = () => {
       <div className="pointer-events-none absolute bottom-40 right-10 w-[400px] h-[350px] bg-fuchsia-500/[0.03] rounded-full blur-[130px]" />
 
       {/* HERO */}
-      <section className="relative pt-32 sm:pt-40 pb-12 sm:pb-16 px-6 lg:px-16">
+      <section className="relative pt-32 sm:pt-40 pb-12 sm:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-5xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
           <span className="inline-block mb-6 px-5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.2em] border border-purple-500/20 text-purple-300/80 bg-purple-500/[0.06]">
             Blog

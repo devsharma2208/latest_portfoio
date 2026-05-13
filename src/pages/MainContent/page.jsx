@@ -31,7 +31,7 @@ const MainContent = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-60"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
             </span>
-            Accepting New Projects
+            Open to Exciting Opportunities
           </motion.div>
 
           {/* Main Heading with ReactTyped and Image */}
@@ -63,19 +63,20 @@ const MainContent = () => {
                     {/* Overlay Gradient on Image */}
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent pointer-events-none rounded-[2.5rem]" />
                     <div className="absolute bottom-5 left-0 right-0 text-[8px] font-black text-white tracking-[0.4em] uppercase opacity-40 text-center w-full flex justify-center">
-                      AI ENGINEER
+                      MERN • REACT NATIVE • AI
                     </div>
                   </div>
                 </motion.div>
               </div>
-              <p className="mb-6 sm:mb-8"> Building intelligent </p>
+
+              <p className="mb-6 sm:mb-8"> Crafting scalable </p>
 
               <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 text-center block w-full mt-2">
                 <ReactTyped
                   strings={[
-                    "digital products.",
-                    "AI experiences.",
-                    "fast systems.",
+                    "MERN stack applications.",
+                    "React Native mobile apps.",
+                    "AI-powered experiences.",
                   ]}
                   typeSpeed={70}
                   backSpeed={50}
@@ -95,8 +96,9 @@ const MainContent = () => {
             <p className="text-zinc-500 text-lg sm:text-2xl font-light leading-relaxed tracking-tight">
               I'm{" "}
               <span className="text-white font-bold italic">Dev Sharma</span>. A
-              Full-Stack & AI Engineer focused on creating exceptionally fast,
-              accessible, and remarkably beautiful web experiences.
+              MERN Stack, React Native & AI Developer focused on building
+              high-performance, scalable, and visually exceptional digital
+              experiences for modern businesses and startups.
             </p>
           </motion.div>
 
@@ -111,15 +113,16 @@ const MainContent = () => {
               href="mailto:devsharmaelc@gmail.com"
               className="h-16 px-10 rounded-2xl bg-white text-black font-black text-xs tracking-widest hover:bg-zinc-200 transition-all active:scale-[0.98] uppercase flex items-center justify-center shadow-[0_20px_50px_-12px_rgba(255,255,255,0.2)]"
             >
-              Get in Touch
+              Let's Build Together
             </a>
+
             <a
               href="https://github.com/devsharma2208"
               target="_blank"
               rel="noreferrer"
               className="h-16 px-10 rounded-2xl bg-white/5 text-white font-black text-xs tracking-widest border border-white/10 hover:bg-white/10 transition-all active:scale-[0.98] uppercase flex items-center justify-center gap-3 group"
             >
-              View Github
+              Explore My Work
             </a>
           </motion.div>
         </div>

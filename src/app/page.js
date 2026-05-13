@@ -10,6 +10,7 @@ import Header from "@/pages/Header/page";
 import MainContent from "@/pages/MainContent/page";
 import Image from "@/pages/photo/page";
 import Footer from "@/custom/Footer/page";
+import { CursorGlow } from "@/custom/mouseGlow/page";
 
 export default function Home() {
   const [hasMounted, setHasMounted] = useState(false);
@@ -44,6 +45,7 @@ export default function Home() {
 
   return (
     <AnimatePresence mode="wait">
+      <CursorGlow/>
       {showLanding ? (
         <motion.div
           key="landing"
@@ -134,7 +136,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[auto]">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto">
                 {/* Card 1 */}
                 <div className="bg-black/50 backdrop-blur-md border border-white/5 rounded-2xl p-8 hover:border-blue-500/30 hover:bg-blue-900/10 transition-all duration-300">
                   <div className="w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-blue-400 mb-6 text-xl">
@@ -210,8 +212,8 @@ export default function Home() {
             </div>
 
             {/* Footer Component */}
-            <Footer />
           </div>
+          <Footer />
         </motion.div>
       )}
     </AnimatePresence>

@@ -29,26 +29,8 @@ import {
   SiExpress,
   SiMongodb,
 } from "react-icons/si";
+import { CursorGlow } from "@/custom/mouseGlow/page";
 
-/* ================= CURSOR GLOW ================= */
-function CursorGlow() {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  useEffect(() => {
-    const move = (e) => setPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-  return (
-    <div
-      className="fixed top-0 left-0 w-96 h-96 pointer-events-none z-50 mix-blend-screen"
-      style={{
-        transform: `translate(${pos.x - 192}px, ${pos.y - 192}px)`,
-        background:
-          "radial-gradient(circle, rgba(168,85,247,0.1), transparent 70%)",
-      }}
-    />
-  );
-}
 
 /* ================= NOISE ================= */
 function Noise() {
@@ -222,7 +204,7 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="bg-[#030303] text-white min-h-screen overflow-x-hidden select-none">
+    <div className="bg-[#030303] pt-20 text-white min-h-screen overflow-x-hidden select-none">
       <Noise />
       <CursorGlow />
       <Header />
@@ -522,8 +504,8 @@ export default function AboutPage() {
         </div>
 
         {/* ===== FOOTER ===== */}
-        <Footer />
       </main>
+      <Footer />
 
       {/* ===== KEYFRAMES ===== */}
       <style jsx>{`

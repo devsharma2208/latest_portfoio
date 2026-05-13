@@ -11,28 +11,10 @@ import successAnimation from "../../assests/animations/success.json";
 import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
 import Footer from "@/custom/Footer/page";
+import { CursorGlow } from "@/custom/mouseGlow/page";
 
 /* ─────────────── Custom Cursor Animation ─────────────── */
-const CursorGlow = () => {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const move = (e) => setPos({ x: e.clientX, y: e.clientY });
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-
-  return (
-    <div
-      className="fixed top-0 left-0 w-96 h-96 pointer-events-none z-[60] mix-blend-screen transition-transform duration-75 ease-out"
-      style={{
-        transform: `translate(${pos.x - 192}px, ${pos.y - 192}px)`,
-        background:
-          "radial-gradient(circle, rgba(168,85,247,0.15), transparent 70%)",
-      }}
-    />
-  );
-};
 
 const Contact = () => {
   const form = useRef();
@@ -107,7 +89,7 @@ const Contact = () => {
 
   return (
     // Added select-none to prevent text copying
-    <div className="min-h-screen w-full overflow-x-hidden text-white relative bg-[#07070f] select-none">
+    <div className="min-h-screen w-full pt-20 overflow-x-hidden text-white relative bg-[#07070f] select-none">
       {/* Custom Cursor */}
       <CursorGlow />
 
