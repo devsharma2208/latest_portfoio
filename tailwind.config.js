@@ -8,7 +8,7 @@ module.exports = {
   ],
   safelist: ["bg-black", "text-white", "bg-white"],
   darkMode: "class",
-  theme: {
+  theme: { 
     extend: {
       colors: {
         black: "#000000",
