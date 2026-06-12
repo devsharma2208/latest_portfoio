@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       colors: {
         black: "#000000",
-        // Theme Brand Colors
+        // Theme Brand Color
         primary: {
           50: "#faf5ff",
           100: "#f3e8ff",
