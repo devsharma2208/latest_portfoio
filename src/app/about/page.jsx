@@ -325,12 +325,12 @@ export default function AboutPage() {
                       value="MERN Stack Developer"
                       color="#f472b6"
                     />
-                    <InfoField
+                    {/* <InfoField
                       icon={FaBirthdayCake}
                       label="Date of Birth"
                       value="22 Aug 2001"
                       color="#fb923c"
-                    />
+                    /> */}
                     <InfoField
                       icon={FaGlobe}
                       label="Nationality"

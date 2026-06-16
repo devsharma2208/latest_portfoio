@@ -144,7 +144,7 @@ const FeaturedCard = ({ project, index }) => {
         className={`relative overflow-hidden ${isEven ? "order-1" : "order-2"}`}
       >
         <div
-          className={`w-full h-full transition-transform duration-700 ${
+          className={`w-[40rem] h-[25rem] transition-transform duration-700 ${
             entered ? "scale-105" : "scale-100"
           } ${
             ["Casham", "3B Profiles"].includes(project.title)
