@@ -127,7 +127,7 @@ const FeaturedCard = ({ project, index }) => {
         ease: [0.16, 1, 0.3, 1],
         delay: index * 0.1,
       }}
-      className="relative grid md:grid-cols-2 rounded-3xl overflow-hidden border border-white/5 bg-[#0d0d1a] min-h-[420px]"
+      className="relative grid grid-cols-1 md:grid-cols-2 rounded-3xl overflow-hidden border border-white/5 bg-[#0d0d1a] min-h-[420px] items-center p-6 md:p-0 gap-6 md:gap-0"
     >
       {entered && (
         <div
@@ -140,15 +140,18 @@ const FeaturedCard = ({ project, index }) => {
         />
       )}
 
+      {/* Image Side */}
       <div
-        className={`relative overflow-hidden ${isEven ? "order-1" : "order-2"}`}
+        className={`relative w-full h-full flex items-center justify-center p-4 md:p-8 ${
+          isEven ? "md:order-1 order-1" : "md:order-2 order-1"
+        }`}
       >
         <div
-          className={`w-[40rem] h-[25rem] transition-transform duration-700 ${
-            entered ? "scale-105" : "scale-100"
+          className={`w-full max-w-[500px] aspect-[16/10] rounded-2xl transition-transform duration-700 mx-auto ${
+            entered ? "scale-[1.03]" : "scale-100"
           } ${
             ["Casham", "3B Profiles"].includes(project.title)
-              ? "bg-contain p-10"
+              ? "bg-contain"
               : "bg-cover"
           } bg-center bg-no-repeat`}
           style={{
@@ -159,15 +162,18 @@ const FeaturedCard = ({ project, index }) => {
         />
       </div>
 
+      {/* Content Side */}
       <div
-        className={`p-8 md:p-12 flex flex-col justify-center ${
-          isEven ? "order-2" : "order-1"
+        className={`p-4 md:p-12 flex flex-col justify-center ${
+          isEven ? "md:order-2 order-2" : "md:order-1 order-2"
         }`}
       >
-        <SectionLabel>{project.tech}</SectionLabel>
+        <div className="self-start">
+          <SectionLabel>{project.tech}</SectionLabel>
+        </div>
 
         <h2
-          className={`text-5xl font-bold font-[Bebas_Neue] my-5 transition-colors duration-300 ${
+          className={`text-4xl md:text-5xl font-bold font-[Bebas_Neue] my-4 md:my-5 transition-colors duration-300 ${
             entered ? "text-violet-200" : "text-white"
           }`}
         >
@@ -182,7 +188,7 @@ const FeaturedCard = ({ project, index }) => {
           {project.features.map((f) => (
             <span
               key={f}
-              className="text-[10px] bg-white/5 px-3 py-1 rounded-md"
+              className="text-[10px] bg-white/5 px-3 py-1 rounded-md text-slate-300"
             >
               {f}
             </span>
@@ -303,7 +309,6 @@ export default function Works() {
   });
 
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   const featured = [
@@ -487,7 +492,6 @@ export default function Works() {
         <section className="max-w-[1200px] mx-auto my-24 px-6 grid gap-[70px]">
           <div>
             <SectionLabel>Premium Apps</SectionLabel>
-
             <h2 className="font-[Bebas_Neue] text-6xl mt-3">Featured Work</h2>
           </div>
 
@@ -500,7 +504,6 @@ export default function Works() {
         <section className="max-w-[1200px] mx-auto my-24 px-6">
           <div className="mb-10">
             <SectionLabel>The Archive</SectionLabel>
-
             <h2 className="font-[Bebas_Neue] text-5xl mt-3">More Projects</h2>
           </div>
 
@@ -515,7 +518,7 @@ export default function Works() {
         <section className="text-center py-40 px-6 relative overflow-hidden">
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[300px] bg-[radial-gradient(ellipse,rgba(124,58,237,0.05)_0%,transparent_70%)] z-0" />
 
-          <h2 className="font-[Bebas_Neue] text-7xl relative z-[1]">
+          <h2 className="font-[Bebas_Neue] text-5xl relative z-[1]">
             Let's Build Something Great
           </h2>
 
