@@ -4,7 +4,7 @@ import { ReactTyped } from "react-typed";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 // Image import path as per your requirement
-import devImg from "../../assests/image/logo_image_colored.png";
+import devImg from "../../assests/image/profile.jpeg";
 
 const MainContent = () => {
   const { scrollY } = useScroll();
@@ -54,11 +54,11 @@ const MainContent = () => {
                   {/* Massive Backglow */}
                   <div className="absolute -inset-6 sm:-inset-10 bg-linear-to-r from-blue-400 to-purple-600 rounded-full blur-[80px] opacity-0 group-hover:opacity-40 transition-opacity duration-1000"></div>
 
-                  <div className="relative p-2 rounded-[2.5rem] bg-linear-to-br from-white/10 via-white/2 to-transparent border border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden backdrop-blur-2xl inline-flex items-center justify-center">
+                  <div className="relative  rounded-[2.5rem] bg-linear-to-br from-white/10 via-white/2 to-transparent border border-white/10 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] overflow-hidden backdrop-blur-2xl inline-flex items-center justify-center">
                     <img
                       src={devImg.src}
                       alt="Dev Sharma Profile"
-                      className="relative w-32 h-32 sm:w-52 sm:h-52 rounded-4xl object-cover transition-all duration-1000 group-hover:scale-105 block"
+                      className="relative w-32 h-32 sm:w-52 sm:h-60 rounded-4xl object-fill transition-all duration-1000 group-hover:scale-105 block"
                     />
                     {/* Overlay Gradient on Image */}
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent pointer-events-none rounded-[2.5rem]" />
