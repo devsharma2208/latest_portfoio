@@ -58,7 +58,7 @@ const MainContent = () => {
                     <img
                       src={devImg.src}
                       alt="Dev Sharma Profile"
-                      className="relative w-32 h-32 sm:w-52 sm:h-60 rounded-4xl object-fill transition-all duration-1000 group-hover:scale-105 block"
+                      className="relative w-44 h-52 sm:w-52 sm:h-60 rounded-4xl object-fill transition-all duration-1000 group-hover:scale-105 block"
                     />
                     {/* Overlay Gradient on Image */}
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent pointer-events-none rounded-[2.5rem]" />
