@@ -370,7 +370,7 @@ export default function AboutPage() {
                     <InfoField
                       icon={FaBriefcase}
                       label="Organisation"
-                      value="Pearl Organisation"
+                      value="Centrelocus"
                       color="#fbbf24"
                     />
                   </div>
