@@ -22,15 +22,16 @@ import {
   FaLocationArrow,
   FaLinkedin,
   FaGithub,
+  FaBrain, // Added for Machine Learning & LLMs
 } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiTailwindcss,
   SiExpress,
   SiMongodb,
+  SiFastapi, // Added for FastAPI
 } from "react-icons/si";
 import { CursorGlow, CustomCursor } from "@/custom/mouseGlow/page";
-
 
 /* ================= NOISE ================= */
 function Noise() {
@@ -136,7 +137,7 @@ function SkillCircle({ skill, index }) {
       </div>
 
       {/* Label */}
-      <p className="mt-4 text-xs sm:text-sm text-zinc-500 group-hover:text-zinc-200 transition-colors duration-500 font-medium">
+      <p className="mt-4 text-xs sm:text-sm text-zinc-500 group-hover:text-zinc-200 transition-colors duration-500 font-medium text-center max-w-[90px] sm:max-w-none">
         {name}
       </p>
     </motion.div>
@@ -182,6 +183,11 @@ export default function AboutPage() {
     { name: "Node.js", percent: 80, color: "#68A063", icon: FaNodeJs },
     { name: "Express.js", percent: 75, color: "#A0AEC0", icon: SiExpress },
     { name: "MongoDB", percent: 75, color: "#4DB33D", icon: SiMongodb },
+    // Newly Added AI/ML & Python Technologies
+    { name: "ML", percent: 75, color: "#FF6F61", icon: FaBrain },
+    { name: "LLM", percent: 80, color: "#A855F7", icon: FaBrain },
+    { name: "LangChain", percent: 70, color: "#1C3D5A", icon: FaBrain },
+    { name: "FastAPI", percent: 80, color: "#009688", icon: SiFastapi },
   ];
 
   const fadeUp = {
@@ -265,10 +271,8 @@ export default function AboutPage() {
         </motion.div>
 
         {/* ===== MAIN TWO-COLUMN LAYOUT ===== */}
-        {/* Removed 'items-start' to allow height stretching */}
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
           {/* ===== LEFT: PERSONAL INFO CARD ===== */}
-          {/* Added h-full to make column stretch */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -303,7 +307,7 @@ export default function AboutPage() {
                         Dev Sharma
                       </h2>
                       <p className="text-sm text-purple-400 font-medium">
-                        MERN Stack Developer
+                        Full Stack & AI Developer
                       </p>
                     </div>
                   </div>
@@ -322,15 +326,9 @@ export default function AboutPage() {
                     <InfoField
                       icon={FaBriefcase}
                       label="Role"
-                      value="MERN Stack Developer"
+                      value="MERN & AI Stack Developer"
                       color="#f472b6"
                     />
-                    {/* <InfoField
-                      icon={FaBirthdayCake}
-                      label="Date of Birth"
-                      value="22 Aug 2001"
-                      color="#fb923c"
-                    /> */}
                     <InfoField
                       icon={FaGlobe}
                       label="Nationality"
@@ -462,34 +460,35 @@ export default function AboutPage() {
                         Technical Proficiency
                       </h3>
                       <p className="text-[10px] text-zinc-600 uppercase tracking-[0.2em]">
-                        Frontend & Backend Technologies
+                        Full Stack & Intelligent Systems
                       </p>
                     </div>
                   </div>
 
-                  {/* Skills Grid */}
-                  <div className="flex-grow grid grid-cols-3 sm:grid-cols-3 gap-x-6 gap-y-10 sm:gap-x-8 sm:gap-y-12 place-items-center content-center">
+                  {/* Responsive Skills Grid (3 columns on mobile, 4 columns on larger screens to handle 13 items neatly) */}
+                  <div className="flex-grow grid grid-cols-3 sm:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 place-items-center content-center">
                     {skills.map((skill, i) => (
                       <SkillCircle key={i} skill={skill} index={i} />
                     ))}
                   </div>
 
-                  {/* Bottom stats bar */}
+                  {/* Bottom stats bar - Safely expanded to 4 columns to include AI & Automation stats */}
                   <div className="mt-8 pt-8 border-t border-white/[0.04]">
-                    <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="grid grid-cols-4 gap-2 text-center">
                       {[
-                        { label: "Frontend", value: "5", color: "#a855f7" },
-                        { label: "Backend", value: "3", color: "#6366f1" },
+                        { label: "Frontend", value: "6", color: "#a855f7" },
+                        { label: "Backend", value: "4", color: "#6366f1" },
                         { label: "Database", value: "1", color: "#f472b6" },
+                        { label: "AI & ML", value: "3", color: "#10B981" },
                       ].map((stat, i) => (
                         <div key={i} className="group/stat">
-                          <p
-                            className="text-2xl font-bold tabular-nums"
+                          <p 
+                            className="text-xl sm:text-2xl font-bold tabular-nums"
                             style={{ color: stat.color }}
                           >
                             {stat.value}
                           </p>
-                          <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 mt-1">
+                          <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.15em] text-zinc-600 mt-1">
                             {stat.label}
                           </p>
                         </div>
@@ -501,8 +500,6 @@ export default function AboutPage() {
             </div>
           </motion.div>
         </div>
-
-        {/* ===== FOOTER ===== */}
       </main>
       <Footer />
 

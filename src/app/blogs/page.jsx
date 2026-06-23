@@ -71,22 +71,33 @@ const FeaturedPost = ({ blog, onOpen }) => {
 
 /* ─────────────── Blog List Card ─────────────── */
 const BlogListCard = ({ blog, index, onOpen }) => {
+  const isComingSoon = blog.date === "Coming Soon";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.6 }}
       viewport={{ once: true }}
-      whileHover={{ x: 6 }}
-      className="group flex flex-col sm:flex-row items-stretch gap-4 sm:gap-5 p-4 sm:p-5 rounded-2xl border border-white/[0.06] hover:border-purple-500/25 hover:bg-purple-500/[0.03] cursor-pointer transition-all duration-500"
-      onClick={onOpen}
+      whileHover={isComingSoon ? {} : { x: 6 }}
+      // Agar 'Coming Soon' hai to click event fire nahi hoga aur pointer cursor remove ho jayega
+      className={`group flex flex-col sm:flex-row items-stretch gap-4 sm:gap-5 p-4 sm:p-5 rounded-2xl border border-white/[0.06] ${
+        isComingSoon 
+          ? "opacity-75 cursor-default" 
+          : "hover:border-purple-500/25 hover:bg-purple-500/[0.03] cursor-pointer"
+      } transition-all duration-500`}
+      onClick={() => {
+        if (!isComingSoon) {
+          onOpen();
+        }
+      }}
     >
       <div className="relative w-full sm:w-[200px] md:w-[240px] h-[140px] sm:h-auto flex-shrink-0 rounded-xl overflow-hidden">
         <Image
           src={blog.img}
           alt={blog.title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          className={`object-cover transition-transform duration-700 ${!isComingSoon && "group-hover:scale-110"}`}
           sizes="(max-width: 640px) 100vw, 240px"
         />
       </div>
@@ -102,7 +113,7 @@ const BlogListCard = ({ blog, index, onOpen }) => {
           </span>
         </div>
 
-        <h3 className="text-base sm:text-lg font-bold text-white leading-snug mb-2 group-hover:text-purple-200 transition-colors duration-400">
+        <h3 className={`text-base sm:text-lg font-bold text-white leading-snug mb-2 ${!isComingSoon && "group-hover:text-purple-200"} transition-colors duration-400`}>
           {blog.title}
         </h3>
 
@@ -111,20 +122,23 @@ const BlogListCard = ({ blog, index, onOpen }) => {
         </p>
 
         <div className="flex items-center justify-between mt-auto">
-          <span className="text-[11px] text-slate-600 flex items-center gap-1.5">
+          <span className={`text-[11px] flex items-center gap-1.5 ${isComingSoon ? "text-purple-400/80 font-medium" : "text-slate-600"}`}>
             <FaCalendarAlt className="w-2.5 h-2.5" />
             {blog.date}
           </span>
-          <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/[0.04] border border-white/[0.06] group-hover:bg-purple-500/15 group-hover:border-purple-500/25 transition-all duration-400">
-            <FaArrowRight className="w-3 h-3 text-slate-500 group-hover:text-purple-400 group-hover:translate-x-0.5 transition-all duration-300" />
-          </span>
+          
+          {!isComingSoon && (
+            <span className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/[0.04] border border-white/[0.06] group-hover:bg-purple-500/15 group-hover:border-purple-500/25 transition-all duration-400">
+              <FaArrowRight className="w-3 h-3 text-slate-500 group-hover:text-purple-400 group-hover:translate-x-0.5 transition-all duration-300" />
+            </span>
+          )}
         </div>
       </div>
     </motion.div>
   );
 };
 
-/* ─────────────── Main Page ─────────────── */
+/* ── MAIN PAGE ── */
 const Blogs = () => {
   const [open, setOpen] = useState(false);
 
@@ -134,7 +148,6 @@ const Blogs = () => {
       "A comprehensive guide to getting started with React.js — components, state management, props, hooks, and building your first real-world application from scratch.",
     date: "August 20, 2025",
     readTime: "8 min read",
-    // ✅ 使用 import 的变量
     img: reactImg,
     tag: "Frontend",
   };

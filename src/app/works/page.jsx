@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaArrowRight, FaBriefcase } from "react-icons/fa";
 
 import Header from "@/pages/Header/page";
 import Footer from "@/custom/Footer/page";
@@ -329,8 +329,8 @@ export default function Works() {
       description:
         "Mobile payment app enabling instant P2P transfers, QR-code scanning, and seamless wallet management for everyday transactions.",
       features: ["QR Pay", "Wallet System", "Security", "P2P Transfer"],
-      live: "https://play.google.com/store/apps/details?id=com.casham&hl=en",
-      code: "https://play.google.com/store/apps/details?id=com.casham&hl=en",
+      live: "https://play.google.com/store/details?id=com.casham&hl=en",
+      code: "https://play.google.com/store/details?id=com.casham&hl=en",
     },
     {
       title: "3B Profiles",
@@ -385,6 +385,33 @@ export default function Works() {
       live: "https://github.com/devsharma2208/Full-Stack/tree/master/Backend",
       code: "https://github.com/devsharma2208/Full-Stack/tree/master/Backend",
     },
+  ];
+
+  const experience = [
+    {
+      role: "Full Stack Developer",
+      company: "Centrelocus",
+      type: "Full-time",
+      duration: "Mar 2026 - Present",
+      location: "Dehradun, Uttarakhand, India (On-Site)",
+      description: "Architecting scale-ready digital platforms and optimizing frontend application experiences with clean state architecture."
+    },
+    {
+      role: "MERN Stack & React Native Developer",
+      company: "Pearl Organisation",
+      type: "Full-time",
+      duration: "Sep 2024 - Dec 2025",
+      location: "Dehradun, Uttarakhand, India (On-Site)",
+      description: "Engineered high-fidelity responsive hybrid mobile applications and scaled standard enterprise internal systems."
+    },
+    {
+      role: "Front End Developer",
+      company: "Byteworld IT Services",
+      type: "Full-time",
+      duration: "Mar 2024 - Aug 2024",
+      location: "Gurugram, Haryana, India (On-Site)",
+      description: "Designed UI systems, built interactive interface component elements, and enhanced web presentation features."
+    }
   ];
 
   return (
@@ -510,6 +537,59 @@ export default function Works() {
           <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8">
             {archive.map((p, i) => (
               <SmallCard key={i} project={p} index={i} />
+            ))}
+          </div>
+        </section>
+
+        {/* EXPERIENCE SECTION */}
+        <section className="max-w-[1100px] mx-auto my-32 px-6">
+          <div className="mb-16">
+            <SectionLabel>Journey</SectionLabel>
+            <h2 className="font-[Bebas_Neue] text-5xl mt-3 tracking-wide">Professional Experience</h2>
+          </div>
+
+          <div className="relative border-l border-white/5 pl-6 ml-4 space-y-12">
+            {experience.map((exp, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative group"
+              >
+                {/* Custom Timeline Dot Marker */}
+                <div className="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-[#07070f] border-2 border-violet-500 group-hover:bg-violet-400 transition-colors duration-300 flex items-center justify-center">
+                  <div className="w-1 h-1 bg-white rounded-full hidden group-hover:block" />
+                </div>
+
+                <div className="bg-[#0c0c20]/60 hover:bg-[#0d0d23] border border-white/5 rounded-2xl p-6 md:p-8 transition-colors duration-300 shadow-xl backdrop-blur-sm">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white tracking-wide">{exp.role}</h3>
+                      <div className="flex flex-wrap items-center gap-2 mt-1 text-sm">
+                        <span className="text-violet-400 font-medium">{exp.company}</span>
+                        {exp.type && (
+                          <span className="text-[10px] uppercase bg-white/5 px-2 py-0.5 rounded text-slate-400 border border-white/5">
+                            {exp.type}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="text-right md:text-right flex flex-col items-start md:items-end">
+                      <span className="text-xs font-bold text-violet-300/80 bg-violet-500/10 border border-violet-500/25 px-3 py-1 rounded-full whitespace-nowrap">
+                        {exp.duration}
+                      </span>
+                      {exp.location && (
+                        <span className="text-xs text-slate-500 mt-2">{exp.location}</span>
+                      )}
+                    </div>
+                  </div>
+                  <p className="text-slate-400 text-sm leading-relaxed max-w-[800px]">
+                    {exp.description}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </section>
