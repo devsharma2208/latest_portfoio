@@ -541,58 +541,8 @@ export default function Works() {
           </div>
         </section>
 
-        {/* EXPERIENCE SECTION */}
-        <section className="max-w-[1100px] mx-auto my-32 px-6">
-          <div className="mb-16">
-            <SectionLabel>Journey</SectionLabel>
-            <h2 className="font-[Bebas_Neue] text-5xl mt-3 tracking-wide">Professional Experience</h2>
-          </div>
-
-          <div className="relative border-l border-white/5 pl-6 ml-4 space-y-12">
-            {experience.map((exp, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative group"
-              >
-                {/* Custom Timeline Dot Marker */}
-                <div className="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-[#07070f] border-2 border-violet-500 group-hover:bg-violet-400 transition-colors duration-300 flex items-center justify-center">
-                  <div className="w-1 h-1 bg-white rounded-full hidden group-hover:block" />
-                </div>
-
-                <div className="bg-[#0c0c20]/60 hover:bg-[#0d0d23] border border-white/5 rounded-2xl p-6 md:p-8 transition-colors duration-300 shadow-xl backdrop-blur-sm">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white tracking-wide">{exp.role}</h3>
-                      <div className="flex flex-wrap items-center gap-2 mt-1 text-sm">
-                        <span className="text-violet-400 font-medium">{exp.company}</span>
-                        {exp.type && (
-                          <span className="text-[10px] uppercase bg-white/5 px-2 py-0.5 rounded text-slate-400 border border-white/5">
-                            {exp.type}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="text-right md:text-right flex flex-col items-start md:items-end">
-                      <span className="text-xs font-bold text-violet-300/80 bg-violet-500/10 border border-violet-500/25 px-3 py-1 rounded-full whitespace-nowrap">
-                        {exp.duration}
-                      </span>
-                      {exp.location && (
-                        <span className="text-xs text-slate-500 mt-2">{exp.location}</span>
-                      )}
-                    </div>
-                  </div>
-                  <p className="text-slate-400 text-sm leading-relaxed max-w-[800px]">
-                    {exp.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+      
+        
 
         {/* CTA */}
         <section className="text-center py-40 px-6 relative overflow-hidden">
