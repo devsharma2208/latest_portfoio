@@ -22,8 +22,10 @@ import {
   FaLinkedin,
   FaGithub,
   FaBrain, 
-  FaGraduationCap, // Added for Education Title
-  FaCertificate,   // Added for Certification/Newton School
+  FaGraduationCap,
+  FaCertificate,
+  FaAward,          // Added for Certification Section Header
+  FaExternalLinkAlt // Added for 'Show Credential' interactive icon
 } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -231,6 +233,28 @@ export default function AboutPage() {
       color: "#10b981",
       description: "Immersive industrial coding Bootcamp specializing in MERN stack ecosystem. Mastered data architectures, modern state workflows, testing suites, and complex problem-solving patterns.",
     },
+  ];
+
+  // Certifications Array 
+  const certifications = [
+    {
+      title: "Claude 101",
+      issuer: "Anthropic",
+      date: "Issued Apr 2026",
+      credentialId: "fed4vysvdu7f",
+      url: "https://verify.skilljar.com/c/fed4vysvdu7f", 
+      skills: ["Artificial Intelligence (AI)", "Claude Skills", "Prompt Engineering", "LLM Workflows"],
+      color: "#cc9966", // Premium Sand/Clay color matching Anthropic branding
+    },
+    {
+      title: "AI Foundations Associate",
+      issuer: "Oracle",
+      date: "Issued Oct 2025",
+      credentialId: "Verified",
+      url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=55D8E222ED53BF386CA8EDE871B59736A37D2D90533D2814CAB8D35699E2855C", 
+      skills: ["Artificial Intelligence (AI)", "AI Foundations", "Machine Learning Basics"],
+      color: "#f35e19", // Corporate Orange color matching Oracle branding
+    }
   ];
 
   const fadeUp = {
@@ -500,7 +524,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ===== ADDED: EDUCATION TIMELINE SECTION ===== */}
+        {/* ===== EDUCATION TIMELINE SECTION ===== */}
         <section className="max-w-7xl mx-auto mt-32 px-2 sm:px-4">
           <div className="mb-16">
             <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-indigo-400/70 block mb-2">
@@ -523,7 +547,6 @@ export default function AboutPage() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="relative group"
                 >
-                  {/* Custom Timeline Dot Marker with Variable Color */}
                   <div 
                     className="absolute -left-[35px] top-1.5 w-4 h-4 rounded-full bg-[#07070f] border-2 transition-colors duration-300 flex items-center justify-center"
                     style={{ borderColor: edu.color }}
@@ -534,7 +557,6 @@ export default function AboutPage() {
                   <div className="bg-[#0c0c20]/40 hover:bg-[#0f0f29]/60 border border-white/[0.05] rounded-2xl p-6 md:p-8 transition-all duration-300 shadow-xl backdrop-blur-sm group-hover:border-white/[0.12]">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
                       <div className="flex items-start gap-4">
-                        {/* Dynamic Floating Education/Bootcamp Icon */}
                         <div 
                           className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-white/[0.06] mt-1"
                           style={{ backgroundColor: `${edu.color}10`, borderColor: `${edu.color}30` }}
@@ -573,6 +595,98 @@ export default function AboutPage() {
                 </motion.div>
               );
             })}
+          </div>
+        </section>
+
+        {/* ===== ADDED: PREMIUM CERTIFICATIONS GRID SECTION ===== */}
+        <section className="max-w-7xl mx-auto mt-32 px-2 sm:px-4">
+          <div className="mb-16">
+            <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-emerald-400/70 block mb-2">
+              Credentials
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white">
+              Professional Certifications
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {certifications.map((cert, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="group relative"
+              >
+                {/* Subtle dynamic outer glow mapping to provider branding */}
+                <div 
+                  className="absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl pointer-events-none"
+                  style={{ backgroundImage: `linear-gradient(to bottom right, ${cert.color}15, transparent)` }}
+                />
+
+                <div className="relative h-full bg-[#0c0c20]/40 hover:bg-[#0f0f29]/60 border border-white/[0.05] rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 backdrop-blur-sm group-hover:border-white/[0.12]">
+                  <div>
+                    {/* Upper Row: Title Badge and Verification Date */}
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="flex items-start gap-4">
+                        <div 
+                          className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border"
+                          style={{ backgroundColor: `${cert.color}08`, borderColor: `${cert.color}25` }}
+                        >
+                          <FaAward style={{ color: cert.color }} className="text-base" />
+                        </div>
+                        <div>
+                          <h3 className="text-lg sm:text-xl font-bold text-white tracking-wide group-hover:text-purple-300 transition-colors duration-300">
+                            {cert.title}
+                          </h3>
+                          <p className="text-sm font-semibold text-zinc-400 mt-0.5">
+                            {cert.issuer}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <span className="text-[11px] font-medium text-zinc-500 whitespace-nowrap bg-white/[0.02] border border-white/[0.05] px-2.5 py-1 rounded-md">
+                        {cert.date}
+                      </span>
+                    </div>
+
+                    {/* Middle Row: Meta Information (Credential ID) */}
+                    <div className="mb-6 pl-14">
+                      <p className="text-xs text-zinc-500">
+                        Credential ID: <span className="font-mono text-zinc-400 bg-white/[0.02] px-1.5 py-0.5 rounded border border-white/[0.04] text-[11px] ml-1">{cert.credentialId}</span>
+                      </p>
+                    </div>
+
+                    {/* Skill Tags/Chips Rendering System */}
+                    <div className="flex flex-wrap gap-1.5 pl-14 mb-8">
+                      {cert.skills.map((skill, sIdx) => (
+                        <span 
+                          key={sIdx} 
+                          className="text-[10px] px-2.5 py-0.5 rounded-full bg-white/[0.02] text-zinc-400 border border-white/[0.05] tracking-wide font-medium group-hover:border-white/[0.1] transition-colors duration-300"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Lower Action Row: Show Credential Trigger Link */}
+                  <div className="pl-14 pt-4 border-t border-white/[0.03] flex justify-end">
+                    <a 
+                      href={cert.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide transition-all duration-300"
+                      style={{ color: cert.color }}
+                    >
+                      <span>Show Credential</span>
+                      <FaExternalLinkAlt className="text-[9px] translate-y-[0.5px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </section>
       </main>
