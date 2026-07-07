@@ -307,7 +307,7 @@ export default function AboutPage() {
           <motion.p
             variants={fadeUp}
             custom={0}
-            className="text-[15px] font-semibold uppercase tracking-[0.4em] text-purple-400/70 mb-6"
+            className="text-[14px] font-bold uppercase tracking-[0.4em] text-purple-400/70 mb-6"
           >
             Portfolio Overview
           </motion.p>
