@@ -273,7 +273,7 @@ const Blogs = () => {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <p className="text-xs text-slate-600">
+          <p className="text-sm text-slate-600">
             More articles coming soon. Subscribe to get notified →
           </p>
         </motion.div>
