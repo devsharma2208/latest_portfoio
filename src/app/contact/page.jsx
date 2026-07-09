@@ -129,7 +129,7 @@ const Contact = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-5xl mx-auto text-center"
         >
-          <span className="inline-block mb-6 px-5 py-1.5 rounded-full text-[11px] font-semibold uppercase tracking-[0.2em] border border-purple-500/20 text-purple-300/80 bg-purple-500/[0.06]">
+          <span className="inline-block mb-6 px-5 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-purple-500/20 text-purple-300/80 bg-purple-500/[0.06]">
             Contact
           </span>
 
