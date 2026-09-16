@@ -485,7 +485,7 @@ export default function Works() {
               </span>
             </h1>
 
-            <p className="text-slate-500 max-w-[550px] mx-auto mb-11 text-lg leading-8">
+            <p className="text-slate-500 max-w-[550px] mx-auto mb-12 text-lg leading-8">
               Building high-performance digital products with modern tech stacks
               and obsessive attention to detail.
             </p>
